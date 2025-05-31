@@ -1,18 +1,42 @@
 .markdown {
-  @apply text-lg leading-relaxed;
+  font-size: 1.125rem; /* text-lg */
+  line-height: 1.75; /* leading-relaxed */
+  color: #f5e9d6;
 }
 
 .markdown p,
 .markdown ul,
 .markdown ol,
 .markdown blockquote {
-  @apply my-6;
+  margin-top: 1.5rem; /* my-6 */
+  margin-bottom: 1.5rem;
+  color: #f5e9d6;
 }
 
 .markdown h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  font-size: 1.875rem; /* text-3xl */
+  margin-top: 3rem; /* mt-12 */
+  margin-bottom: 1rem; /* mb-4 */
+  line-height: 1.375; /* leading-snug */
+  color: #f5e9d6;
+  font-weight: 700; /* font-bold */
 }
 
 .markdown h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  font-size: 1.5rem; /* text-2xl */
+  margin-top: 2rem; /* mt-8 */
+  margin-bottom: 1rem; /* mb-4 */
+  line-height: 1.375; /* leading-snug */
+  color: #f5e9d6;
+  font-weight: 700; /* font-bold */
+}
+
+.markdown a {
+  color: #f5e9d6;
+  text-decoration: underline;
+  transition: color 0.2s ease-in-out;
+}
+
+.markdown a:hover {
+  color: #e5cdb2;
 }
