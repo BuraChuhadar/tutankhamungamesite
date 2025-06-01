@@ -1,3 +1,89 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[data-mode="light"] body {
+  background: #f9f6f2;
+  color: #2d1c00;
+}
+[data-mode="light"] header {
+  background: #fffbe8;
+  border-bottom: 1px solid #e6e1d5;
+}
+[data-mode="light"] .layout-content-container {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px 0 #e6e1d5;
+}
+[data-mode="light"] .post-preview, [data-mode="light"] .development-blog {
+  background: #fff;
+  border: 1px solid #e6e1d5;
+  color: #2d1c00;
+}
+[data-mode="light"] a {
+  color: #0070f3;
+}
+[data-mode="light"] a:hover {
+  color: #0051a3;
+}
+[data-mode="light"] .border {
+  border-color: #e6e1d5 !important;
+}
+[data-mode="light"] .shadow-md {
+  box-shadow: 0 8px 30px #e6e1d5;
+}
+[data-mode="light"] footer {
+  background: #fffbe8;
+  color: #2d1c00;
+  border-top: 1px solid #e6e1d5;
+}
+[data-mode="light"] footer a {
+  color: #0070f3;
+}
+[data-mode="light"] footer a:hover {
+  color: #0051a3;
+}
+[data-mode="light"] .dev-blog-intro {
+  color: #6b4f1d;
+  background: #fffbe8;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+[data-mode="dark"] .dev-blog-intro {
+  color: #beae9d;
+  background: #231a10;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+[data-mode="light"] .coming-soon {
+  color: #6b4f1d;
+  background: #fffbe8;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+[data-mode="dark"] .coming-soon {
+  color: #beae9d;
+  background: #231a10;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+[data-mode="light"] .dev-blog-intro-panel {
+  background: linear-gradient(90deg, #fffbe8 0%, #f9e7c3 100%);
+  border: 2px solid #fcd34d;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px 0 #e6e1d5;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  transition: background 0.3s, border 0.3s;
+}
+[data-mode="dark"] .dev-blog-intro-panel {
+  background: linear-gradient(90deg, #231a10 0%, #18120a 100%);
+  border: 2px solid #c2881b;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 24px 0 #40362b;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  transition: background 0.3s, border 0.3s;
+}

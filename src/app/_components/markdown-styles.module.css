@@ -1,6 +1,10 @@
 .markdown {
   font-size: 1.125rem; /* text-lg */
   line-height: 1.75; /* leading-relaxed */
+  color: #2d1c00;
+}
+
+:global(.dark) .markdown {
   color: #f5e9d6;
 }
 
@@ -10,7 +14,7 @@
 .markdown blockquote {
   margin-top: 1.5rem; /* my-6 */
   margin-bottom: 1.5rem;
-  color: #f5e9d6;
+  color: inherit;
 }
 
 .markdown h2 {
@@ -18,8 +22,12 @@
   margin-top: 3rem; /* mt-12 */
   margin-bottom: 1rem; /* mb-4 */
   line-height: 1.375; /* leading-snug */
-  color: #f5e9d6;
   font-weight: 700; /* font-bold */
+  color: #6b4f1d;
+}
+
+:global(.dark) .markdown h2 {
+  color: #c2881b;
 }
 
 .markdown h3 {
@@ -32,11 +40,88 @@
 }
 
 .markdown a {
-  color: #f5e9d6;
+  color: #6b4f1d;
   text-decoration: underline;
   transition: color 0.2s ease-in-out;
 }
 
+:global(.dark) .markdown a {
+  color: #f5e9d6;
+}
+
 .markdown a:hover {
+  color: #c2881b;
+}
+
+:global(.dark) .markdown a:hover {
   color: #e5cdb2;
+}
+
+/* Add code block styles */
+.markdown pre {
+  background-color: #f9f6f2;
+  border: 1px solid #e6e1d5;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+:global(.dark) .markdown pre {
+  background-color: #231a10;
+  border-color: #40362b;
+}
+
+.markdown code {
+  font-family: ui-monospace, SFMono, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.875rem;
+  line-height: 1.7142857;
+  color: #2d1c00;
+}
+
+:global(.dark) .markdown code {
+  color: #f5e9d6;
+}
+
+/* Inline code */
+.markdown p > code,
+.markdown li > code,
+.markdown td > code,
+.markdown h2 > code,
+.markdown h3 > code {
+  background-color: #f9f6f2;
+  border: 1px solid #e6e1d5;
+  border-radius: 0.25rem;
+  padding: 0.2em 0.4em;
+  font-size: 0.875em;
+  word-break: break-word;
+}
+
+:global(.dark) .markdown p > code,
+:global(.dark) .markdown li > code,
+:global(.dark) .markdown td > code,
+:global(.dark) .markdown h2 > code,
+:global(.dark) .markdown h3 > code {
+  background-color: #231a10;
+  border-color: #40362b;
+}
+
+/* Video styles */
+.markdown video {
+  max-width: 100%;
+  height: auto;
+  margin: 2rem 0;
+  border-radius: 0.5rem;
+  border: 1px solid #e6e1d5;
+  background-color: #f9f6f2;
+}
+
+:global(.dark) .markdown video {
+  border-color: #40362b;
+  background-color: #231a10;
+}
+
+.markdown video:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(194, 136, 27, 0.5);
 }

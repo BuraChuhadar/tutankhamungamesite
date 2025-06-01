@@ -6,7 +6,7 @@ type Props = {
 
 export function PostBody({ content }: Props) {
   return (
-    <div className="max-w-2xl mx-auto dark:text-[#f5e9d6] text-gray-800">
+    <div className="max-w-2xl mx-auto dark:text-[#f5e9d6] text-[#2d1c00]">
       <div
         className={markdownStyles["markdown"]}
         dangerouslySetInnerHTML={{ __html: content }}

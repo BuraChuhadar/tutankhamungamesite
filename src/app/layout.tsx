@@ -77,7 +77,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="relative flex size-full min-h-screen flex-col bg-white dark:bg-[#1f1a14] text-gray-900 dark:text-[#f5e9d6] group/design-root overflow-x-hidden"
+        className="relative flex size-full min-h-screen flex-col bg-[#f9f6f2] dark:bg-[#1f1a14] text-[#2d1c00] dark:text-[#f5e9d6] group/design-root overflow-x-hidden"
         style={{ fontFamily: '"Space Grotesk", "Noto Sans", sans-serif' }}
       >
         <ThemeProvider>

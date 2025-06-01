@@ -1,0 +1,71 @@
+.switch {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  --size: 32px;
+  height: var(--size);
+  width: var(--size);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  border: 2px solid transparent;
+  padding: 0;
+  background: transparent;
+}
+
+[data-mode="light"] .switch {
+  background: #fcd34d;
+  box-shadow: 0 0 12px #fcd34d;
+}
+
+[data-mode="light"] .switch::after {
+  content: "🌞";
+  font-size: calc(var(--size) * 0.6);
+}
+
+[data-mode="dark"] .switch {
+  background: #1f1f1f;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.2);
+  border-color: #374151;
+}
+
+[data-mode="dark"] .switch::after {
+  content: "🌙";
+  font-size: calc(var(--size) * 0.6);
+}
+
+[data-mode="system"] .switch {
+  background: #9ca3af;
+  box-shadow: 0 0 12px rgba(156, 163, 175, 0.2);
+  border-color: #6b7280;
+}
+
+[data-mode="system"] .switch::after {
+  content: "⚙️";
+  font-size: calc(var(--size) * 0.6);
+}
+
+.switch:hover {
+  transform: scale(1.1);
+}
+
+.switch:active {
+  transform: scale(0.9);
+}
+
+@keyframes n {
+  40% {
+    transform: rotate(-15deg);
+  }
+  80% {
+    transform: rotate(10deg);
+  }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+}

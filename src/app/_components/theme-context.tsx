@@ -14,6 +14,24 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("system");
   const [mounted, setMounted] = useState(false);
 
+  // Apply theme to document
+  const applyTheme = (newTheme: Theme) => {
+    const root = document.documentElement;
+    const isDark =
+      newTheme === "dark" ||
+      (newTheme === "system" &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches);
+    console.log("[ThemeContext] Applying theme:", newTheme, "isDark:", isDark);
+    if (isDark) {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    root.setAttribute("data-mode", newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+
+  // Initialize theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as Theme;
     if (savedTheme && ["light", "dark", "system"].includes(savedTheme)) {
@@ -22,41 +40,36 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setMounted(true);
   }, []);
 
+  // Handle theme changes
   useEffect(() => {
     if (!mounted) return;
-
-    const root = document.documentElement;
-    localStorage.setItem("theme", theme);
-
-    const isDark =
-      theme === "dark" ||
-      (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
-
-    if (isDark) {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-
-    // Update data-mode for CSS styling
-    root.setAttribute("data-mode", theme);
+    applyTheme(theme);
 
     // Add listener for system theme changes
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+    const handleSystemThemeChange = () => {
       if (theme === "system") {
-        root.classList.toggle("dark", e.matches);
+        applyTheme("system");
       }
     };
 
     mediaQuery.addEventListener("change", handleSystemThemeChange);
-    return () => mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    return () =>
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
   }, [theme, mounted]);
 
+  const value = {
+    theme,
+    setTheme, // just setTheme, don't call applyTheme here
+  };
+
+  if (!mounted) {
+    // Prevent hydration mismatch by not rendering children until mounted
+    return null;
+  }
+
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );
 }
 

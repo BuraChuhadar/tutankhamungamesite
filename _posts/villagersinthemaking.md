@@ -19,15 +19,6 @@ While building a Pharaoh-inspired city builder in Unity, I wanted to make the im
 
 ---
 
-## Video Demo
-
-Villagers walking to the house
-
-<video controls>
-  <source src="/assets/blog/videos/villagers-in-the-making.mp4" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-
 ## How Immigration Pathfinding Works
 
 **1. Villager Spawn (Immigration Point)**  
@@ -165,3 +156,8 @@ Check out the demo video and feel free to adapt the code for your own project!
 ## Example Video
 
 Villagers walking to the house
+
+<video controls>
+  <source src="/assets/blog/videos/villagers-in-the-making.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
