@@ -21,9 +21,8 @@ export function DevelopmentBlog() {
         {posts.map((post) => (
           <div
             key={post.slug}
-            className="bg-white dark:bg-[#231a10] border border-[#e6e1d5] dark:border-[#40362b] rounded-lg p-4 shadow-sm transition-colors"
-          >
-            <h3 className="text-[#2d1c00] dark:text-white text-lg font-bold leading-tight">
+            className="bg-white dark:bg-[#231a10] border border-[#e6e1d5] dark:border-[#40362b] rounded-lg p-4 shadow-sm transition-colors"          >
+            <h3 className="text-[#2d1c00] dark:text-white text-lg font-bold leading-tight mb-2">
               <Link href={`/posts/${post.slug}`}>{post.title}</Link>
             </h3>
             <p className="text-[#6b4f1d] dark:text-[#beae9d] text-sm font-normal leading-normal">
@@ -35,10 +34,9 @@ export function DevelopmentBlog() {
             <p className="text-[#3d2b00] dark:text-white text-sm font-normal leading-normal">
               {post.excerpt}
             </p>
-            <div className="mt-2">
-              <Link
+            <div className="mt-2">              <Link
                 href={`/posts/${post.slug}`}
-                className="text-[#0070f3] dark:text-blue-400 hover:text-[#0051a3] dark:hover:text-blue-300 underline transition-colors"
+                className="text-[#c2881b] dark:text-[#d4a574] hover:text-[#8b6914] dark:hover:text-[#c2881b] underline transition-colors"
               >
                 Read More
               </Link>

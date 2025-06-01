@@ -13,9 +13,7 @@ export function Footer() {
             <div className="mx-3 bg-[#40362b] border border-[#40362b] text-[#f5e9d6] font-bold py-3 px-12 lg:px-8 mb-6 lg:mb-0 opacity-70 cursor-not-allowed">
               Development in Progress
             </div>
-            <span className="mx-3 font-medium coming-soon">
-              Coming Soon
-            </span>
+            <span className="mx-3 font-medium coming-soon">Coming Soon</span>
           </div>
         </div>
       </Container>

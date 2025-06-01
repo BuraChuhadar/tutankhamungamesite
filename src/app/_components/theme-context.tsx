@@ -13,7 +13,6 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("system");
   const [mounted, setMounted] = useState(false);
-
   // Apply theme to document
   const applyTheme = (newTheme: Theme) => {
     const root = document.documentElement;
@@ -27,40 +26,42 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } else {
       root.classList.remove("dark");
     }
-    root.setAttribute("data-mode", newTheme);
+    // Set data-mode to the resolved theme (light/dark), not the user preference
+    root.setAttribute("data-mode", isDark ? "dark" : "light");
     localStorage.setItem("theme", newTheme);
   };
-
   // Initialize theme from localStorage
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as Theme;
     if (savedTheme && ["light", "dark", "system"].includes(savedTheme)) {
       setTheme(savedTheme);
+      applyTheme(savedTheme);
+    } else {
+      applyTheme("system");
     }
     setMounted(true);
   }, []);
 
-  // Handle theme changes
+  // Handle system theme changes only
   useEffect(() => {
-    if (!mounted) return;
-    applyTheme(theme);
-
-    // Add listener for system theme changes
+    if (!mounted || theme !== "system") return;
+    
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleSystemThemeChange = () => {
-      if (theme === "system") {
-        applyTheme("system");
-      }
+      applyTheme("system");
     };
 
     mediaQuery.addEventListener("change", handleSystemThemeChange);
     return () =>
       mediaQuery.removeEventListener("change", handleSystemThemeChange);
-  }, [theme, mounted]);
+  }, [theme, mounted]);const handleSetTheme = (newTheme: Theme) => {
+    setTheme(newTheme);
+    applyTheme(newTheme);
+  };
 
   const value = {
     theme,
-    setTheme, // just setTheme, don't call applyTheme here
+    setTheme: handleSetTheme,
   };
 
   if (!mounted) {

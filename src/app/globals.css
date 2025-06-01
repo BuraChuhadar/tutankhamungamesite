@@ -11,9 +11,22 @@
   border-bottom: 1px solid #e6e1d5;
 }
 [data-mode="light"] .layout-content-container {
-  background: #fff;
+  background: #ffffffcc;
   border-radius: 1rem;
   box-shadow: 0 4px 24px 0 #e6e1d5;
+  margin-top: -11rem;
+  position: relative;
+  z-index: 20;
+  padding-top: 7rem;
+}
+[data-mode="dark"] .layout-content-container {
+  background: #1f1a14cc;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px 0 #40362b;
+  margin-top: -11rem;
+  position: relative;
+  z-index: 20;
+  padding-top: 7rem;
 }
 [data-mode="light"] .post-preview, [data-mode="light"] .development-blog {
   background: #fff;
@@ -21,10 +34,10 @@
   color: #2d1c00;
 }
 [data-mode="light"] a {
-  color: #0070f3;
+  color: #c2881b;
 }
 [data-mode="light"] a:hover {
-  color: #0051a3;
+  color: #8b6914;
 }
 [data-mode="light"] .border {
   border-color: #e6e1d5 !important;
@@ -38,10 +51,10 @@
   border-top: 1px solid #e6e1d5;
 }
 [data-mode="light"] footer a {
-  color: #0070f3;
+  color: #c2881b;
 }
 [data-mode="light"] footer a:hover {
-  color: #0051a3;
+  color: #8b6914;
 }
 [data-mode="light"] .dev-blog-intro {
   color: #6b4f1d;
@@ -86,4 +99,41 @@
   padding: 1.5rem 2rem;
   margin-bottom: 2rem;
   transition: background 0.3s, border 0.3s;
+}
+
+/* Ensure text readability in dev blog intro panel */
+[data-mode="light"] .dev-blog-intro-panel h1,
+[data-mode="light"] .dev-blog-intro-panel h4 {
+  color: #1a1100 !important;
+}
+
+[data-mode="dark"] .dev-blog-intro-panel h1,
+[data-mode="dark"] .dev-blog-intro-panel h4 {
+  color: #f5e9d6 !important;
+}
+
+/* Custom size for very large logo */
+.h-112 {
+  height: 28rem; /* 448px */
+}
+
+.h-128 {
+  height: 32rem; /* 512px */
+}
+
+.h-144 {
+  height: 36rem; /* 576px */
+}
+
+.h-160 {
+  height: 40rem; /* 640px */
+}
+
+/* Theme-specific logo shadows */
+[data-mode="light"] .logo-shadow {
+  filter: drop-shadow(0 4px 12px rgba(45, 28, 0, 0.2)) drop-shadow(0 2px 6px rgba(194, 136, 27, 0.1));
+}
+
+[data-mode="dark"] .logo-shadow {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
 }

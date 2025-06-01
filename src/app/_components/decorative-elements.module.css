@@ -1,0 +1,151 @@
+.egyptianBorder {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Light mode background for Egyptian border */
+:global([data-mode="light"]) .egyptianBorder {
+  background: linear-gradient(90deg, #fffbe8 0%, #f9e7c3 100%);
+}
+
+/* Dark mode background for Egyptian border */
+:global([data-mode="dark"]) .egyptianBorder {
+  background: linear-gradient(90deg, #231a10 0%, #18120a 100%);
+}
+
+.egyptianBorder::before,
+.egyptianBorder::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(90deg, 
+    #c2881b 0%, 
+    #d4a574 25%, 
+    #c2881b 50%, 
+    #d4a574 75%, 
+    #c2881b 100%
+  );
+  background-size: 80px 40px;
+  opacity: 0.6;
+  mask-image: url('/assets/images/border-pattern.svg');
+  mask-repeat: repeat-x;
+  mask-size: 80px 40px;
+}
+
+.egyptianBorder::before {
+  top: 0;
+}
+
+.egyptianBorder::after {
+  bottom: 0;
+  transform: rotate(180deg);
+}
+
+.backgroundPattern {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.15;
+  background: url('/assets/images/background-light.png');
+  background-repeat: repeat;
+  background-size: 20%;
+  background-position: center;
+}
+
+.pyramidAccent {
+  position: fixed;
+  right: -150px;
+  bottom: -100px;
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #c2881b, #d4a574);
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: -1;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: pyramidGlow 8s ease-in-out infinite;
+}
+
+@keyframes pyramidGlow {
+  0%, 100% { 
+    opacity: 0.08;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.12;
+    transform: scale(1.05);
+  }
+}
+
+.gameAccents {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 10% 90%, rgba(194, 136, 27, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(107, 79, 29, 0.05) 0%, transparent 40%);
+}
+
+.hieroglyphicSprite {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: url('/assets/images/scarab.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.8;
+  margin-left: 2px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+:global(.dark) .backgroundPattern {
+  opacity: 0.25;
+  background: url('/assets/images/background-dark.png');
+  background-repeat: repeat;
+  background-size: 20%;
+  background-position: center;
+}
+
+
+
+:global(.dark) .egyptianBorder::before,
+:global(.dark) .egyptianBorder::after {
+  background: linear-gradient(90deg, 
+    #c2881b 0%, 
+    #8b6914 25%, 
+    #c2881b 50%, 
+    #8b6914 75%, 
+    #c2881b 100%
+  );
+  opacity: 0.6;
+}
+
+:global(.dark) .pyramidAccent {
+  background: linear-gradient(135deg, #c2881b, #8b6914);
+  opacity: 0.08;
+}
+
+:global(.dark) .gameAccents {
+  background: 
+    radial-gradient(circle at 10% 90%, rgba(245, 233, 214, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(194, 136, 27, 0.03) 0%, transparent 40%);
+}
+
+:global(.dark) .hieroglyphicSprite {
+  filter: brightness(1.3) sepia(0.9) hue-rotate(30deg) saturate(1.4);
+  opacity: 0.8;
+}

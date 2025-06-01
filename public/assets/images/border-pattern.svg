@@ -1,0 +1,22 @@
+<svg width="80" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Egyptian border pattern -->
+  <rect x="0" y="0" width="80" height="40" fill="url(#egyptianGradient)"/>
+  <defs>
+    <linearGradient id="egyptianGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c2881b;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#d4a574;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#c2881b;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#d4a574;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c2881b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Pattern overlay -->
+  <polygon points="0,0 20,20 40,0 60,20 80,0 80,40 0,40" fill="url(#patternGradient)" opacity="0.7"/>
+  <defs>
+    <linearGradient id="patternGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+</svg>
