@@ -129,7 +129,6 @@ export default function RootLayout({
             </div>{" "}
           </PageTransitionProvider>
           <Footer />
-          <ViewTransitionsStatus />
         </ThemeProvider>
       </body>
     </html>
