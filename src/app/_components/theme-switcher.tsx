@@ -25,12 +25,12 @@ export function ThemeSwitcher() {
     const nextTheme = themes[(currentIndex + 1) % themes.length];
     setTheme(nextTheme);
   };
-
   return (
     <button
       type="button"
       onClick={handleClick}
       className={styles.switch}
+      suppressHydrationWarning
       aria-label={`Switch to ${
         themes[(themes.indexOf(theme) + 1) % themes.length]
       } mode`}

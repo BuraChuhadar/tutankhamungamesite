@@ -13,25 +13,29 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("system");
   const [mounted, setMounted] = useState(false);
+
   // Apply theme to document
   const applyTheme = (newTheme: Theme) => {
+    if (typeof window === "undefined") return;
+    
     const root = document.documentElement;
     const isDark =
       newTheme === "dark" ||
       (newTheme === "system" &&
         window.matchMedia("(prefers-color-scheme: dark)").matches);
-    console.log("[ThemeContext] Applying theme:", newTheme, "isDark:", isDark);
+        
     if (isDark) {
       root.classList.add("dark");
     } else {
       root.classList.remove("dark");
     }
-    // Set data-mode to the resolved theme (light/dark), not the user preference
     root.setAttribute("data-mode", isDark ? "dark" : "light");
     localStorage.setItem("theme", newTheme);
   };
-  // Initialize theme from localStorage
+
+  // Initialize theme from localStorage after mounting
   useEffect(() => {
+    setMounted(true);
     const savedTheme = localStorage.getItem("theme") as Theme;
     if (savedTheme && ["light", "dark", "system"].includes(savedTheme)) {
       setTheme(savedTheme);
@@ -39,7 +43,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } else {
       applyTheme("system");
     }
-    setMounted(true);
   }, []);
 
   // Handle system theme changes only
@@ -59,17 +62,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     setTheme(newTheme);
     applyTheme(newTheme);
   };
-
   const value = {
     theme,
     setTheme: handleSetTheme,
   };
 
-  if (!mounted) {
-    // Prevent hydration mismatch by not rendering children until mounted
-    return null;
-  }
-
+  // Always render children to prevent hydration mismatch
   return (
     <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
   );

@@ -17,10 +17,8 @@ export default async function Post(props: Params) {
   }
 
   const content = await markdownToHtml(post.content || "");
-
   return (
     <main>
-      {" "}
       <Container>
         <Header />
         <article className={`mb-32 relative p-8`}>
