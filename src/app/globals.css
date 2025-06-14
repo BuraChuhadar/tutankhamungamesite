@@ -422,11 +422,11 @@ img[src="/assets/images/main-title.png"] {
     animation-timing-function: cubic-bezier(0.2, 0, 0.6, 1);
     animation-fill-mode: both;
     animation-delay: var(--preview-delay, 0s);
-  }
-
-  /* Hero images with smooth sliding */
+  }  /* Hero images with smooth sliding */
   ::view-transition-old(hero-image),
-  ::view-transition-old(dev-blog-image) {
+  ::view-transition-old(dev-blog-image),
+  ::view-transition-old(hero-image-housemanagterandoadmanager),
+  ::view-transition-old(hero-image-villagersinthemaking) {
     animation-name: hero-slide-out;
     animation-duration: 1.4s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -434,18 +434,23 @@ img[src="/assets/images/main-title.png"] {
   }
 
   ::view-transition-new(hero-image),
-  ::view-transition-new(dev-blog-image) {
+  ::view-transition-new(dev-blog-image),
+  ::view-transition-new(hero-image-housemanagterandoadmanager),
+  ::view-transition-new(hero-image-villagersinthemaking) {
     animation-name: hero-slide-in;
     animation-duration: 1.4s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation-fill-mode: both;
   }
-
   /* Title animations */
   ::view-transition-old(main-title),
   ::view-transition-old(page-title),
   ::view-transition-old(hero-title),
-  ::view-transition-old(post-title) {
+  ::view-transition-old(post-title),
+  ::view-transition-old(page-title-housemanagterandoadmanager),
+  ::view-transition-old(page-title-villagersinthemaking),
+  ::view-transition-old(hero-title-housemanagterandoadmanager),
+  ::view-transition-old(hero-title-villagersinthemaking) {
     animation-name: title-slide-out;
     animation-duration: 1.3s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -455,22 +460,29 @@ img[src="/assets/images/main-title.png"] {
   ::view-transition-new(main-title),
   ::view-transition-new(page-title),
   ::view-transition-new(hero-title),
-  ::view-transition-new(post-title) {
+  ::view-transition-new(post-title),
+  ::view-transition-new(page-title-housemanagterandoadmanager),
+  ::view-transition-new(page-title-villagersinthemaking),
+  ::view-transition-new(hero-title-housemanagterandoadmanager),
+  ::view-transition-new(hero-title-villagersinthemaking) {
     animation-name: title-slide-in;
     animation-duration: 1.3s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation-fill-mode: both;
   }
-
   /* Content transitions */
-  ::view-transition-old(blog-content) {
+  ::view-transition-old(blog-content),
+  ::view-transition-old(blog-content-housemanagterandoadmanager),
+  ::view-transition-old(blog-content-villagersinthemaking) {
     animation-name: content-slide-out;
     animation-duration: 1.2s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation-fill-mode: both;
   }
 
-  ::view-transition-new(blog-content) {
+  ::view-transition-new(blog-content),
+  ::view-transition-new(blog-content-housemanagterandoadmanager),
+  ::view-transition-new(blog-content-villagersinthemaking) {
     animation-name: content-slide-in;
     animation-duration: 1.2s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
