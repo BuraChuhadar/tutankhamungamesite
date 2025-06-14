@@ -291,7 +291,7 @@ img[src="/assets/images/main-title.png"] {
   /* Root page transitions with consistent timing */
   ::view-transition-old(root),
   ::view-transition-new(root) {
-    animation-duration: 2s;
+    animation-duration: 1.4s;
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     animation-fill-mode: both;
   }
