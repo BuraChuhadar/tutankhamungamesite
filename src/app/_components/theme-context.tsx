@@ -45,7 +45,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Handle system theme changes only
   useEffect(() => {
     if (!mounted || theme !== "system") return;
-    
+
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleSystemThemeChange = () => {
       applyTheme("system");
@@ -54,7 +54,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     mediaQuery.addEventListener("change", handleSystemThemeChange);
     return () =>
       mediaQuery.removeEventListener("change", handleSystemThemeChange);
-  }, [theme, mounted]);const handleSetTheme = (newTheme: Theme) => {
+  }, [theme, mounted]);
+  const handleSetTheme = (newTheme: Theme) => {
     setTheme(newTheme);
     applyTheme(newTheme);
   };

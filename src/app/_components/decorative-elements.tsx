@@ -1,4 +1,4 @@
-import styles from './decorative-elements.module.css';
+import styles from "./decorative-elements.module.css";
 
 export function DecorativeElements() {
   return (

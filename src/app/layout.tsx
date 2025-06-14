@@ -97,7 +97,9 @@ export default function RootLayout({
           <div
             className={`layout-container flex h-full grow flex-col relative z-10`}
           >
-            {" "}            <div className="absolute inset-0 bg-gradient-to-b from-[#fffbe8]/30 to-transparent dark:from-[#c2881b]/10 dark:to-transparent"></div>            <div className="relative z-30 flex items-center justify-center py-4">
+            {" "}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#fffbe8]/30 to-transparent dark:from-[#c2881b]/10 dark:to-transparent"></div>{" "}
+            <div className="relative z-30 flex items-center justify-center py-4">
               <img
                 src="/assets/images/main-title.png"
                 alt="Tutankhamun: Builders of the Eternal"
