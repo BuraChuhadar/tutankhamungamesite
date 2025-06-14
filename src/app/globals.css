@@ -159,11 +159,22 @@ header a, h2 a {
   pointer-events: auto !important;
 }
 
-/* Specific back button protection */
+/* Specific back button protection with aggressive clickability */
 .back-button {
   z-index: 99999999 !important;
   position: relative !important;
   pointer-events: auto !important;
+  /* Ensure immediate clickability */
+  touch-action: manipulation !important;
+  user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  cursor: pointer !important;
+  /* Create a larger clickable area */
+  padding: 1rem !important;
+  margin: -0.5rem !important;
+  /* Ensure it's always on top */
+  isolation: isolate !important;
+  contain: layout style !important;
 }
 
 /* Ensure headers stay above main title during all states */
@@ -171,21 +182,40 @@ header, h2, .back-button {
   z-index: 99999999 !important;
   position: relative !important;
   pointer-events: auto !important;
+  /* Create isolation boundary to prevent interference */
+  isolation: isolate !important;
+  contain: layout style !important;
+}
+
+/* Force header area to be completely above main title */
+header, h2 {
+  /* Create a barrier zone above main title */
+  background: transparent !important;
+  backdrop-filter: none !important;
+  pointer-events: auto !important;
 }
 
 /* Mobile-specific protection for back button clickability */
 @media (max-width: 640px) {
-  header, h2 {
-    margin-top: 4rem !important;
-    padding-top: 1rem !important;
-  }
-  
   .back-button {
-    padding: 0.75rem !important;
-    margin: 0.5rem 0 !important;
-    min-height: 3rem !important;
+    padding: 1rem !important;
+    margin: 1rem 0 !important;
+    min-height: 4rem !important;
     display: inline-flex !important;
     align-items: center !important;
+    justify-content: flex-start !important;
+    /* Enhanced clickability */
+    min-width: 6rem !important;
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+  }
+}
+
+/* Create buffer zone around navigation elements */
+@media (max-width: 640px) {
+  .main-title-container {
+    margin-top: 2rem !important;
   }
 }
 
@@ -206,6 +236,21 @@ header, h2, .back-button {
   /* Keep minimal styling to avoid conflicts with Tailwind */
   z-index: 2147483647 !important;
   position: relative !important;
+}
+
+/* Prevent main title from blocking header interactions */
+@media (max-width: 640px) {
+  .main-title-container,
+  .main-title-static,
+  img[src="/assets/images/main-title.png"] {
+    /* Don't interfere with clicks in header area */
+    pointer-events: none !important;
+  }
+  
+  /* But allow interactions with the image itself if needed */
+  .main-title-container img[src="/assets/images/main-title.png"] {
+    pointer-events: auto !important;
+  }
 }
 
 /* Ensure main title container always stays on top but below navigation */

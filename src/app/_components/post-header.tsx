@@ -16,6 +16,7 @@ export function PostHeader({ title, coverImage, date, author, slug }: Props) {
   return (
     <>
       <PostTitle slug={slug}>{title}</PostTitle>
+      <DateFormatter dateString={date} />
       <div className="hidden md:block md:mb-12">
         <Avatar name={author.name} picture={author.picture} />
       </div>
@@ -25,9 +26,6 @@ export function PostHeader({ title, coverImage, date, author, slug }: Props) {
           src={coverImage}
           style={slug ? { viewTransitionName: `hero-image-${slug}` } : undefined}
         />
-      </div>
-      <div className="max-w-2xl mx-auto">
-        <DateFormatter dateString={date} />
       </div>
     </>
   );

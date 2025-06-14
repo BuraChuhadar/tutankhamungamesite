@@ -20,13 +20,13 @@ export default async function Post(props: Params) {
     <div className="min-h-screen bg-[#f9f6f2] dark:bg-[#1f1a14] pt-8">
       <Container>
         <div className="w-full bg-white/80 dark:bg-[#1f1a14]/80 rounded-lg shadow-lg p-8 relative z-10">
-          <Header />          <article className="mb-32">
+          <Header />
+          <article className="mb-32">
             <PostHeader
               title={post.title}
               coverImage={post.coverImage}
               date={post.date}
               author={post.author}
-              slug={params.slug}
             />
             <PostBody content={content} />
           </article>

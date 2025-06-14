@@ -101,9 +101,8 @@ export default function RootLayout({
               <div
                 className="absolutebg-gradient-to-b from-[#fffbe8]/30 to-transparent dark:from-[#c2881b]/10 dark:to-transparent"
                 suppressHydrationWarning
-              ></div>{" "}
-              <div
-                className="relative z-[999999] flex items-center justify-center pb-4 main-title-container pt-12"
+              ></div>{" "}              <div
+                className="relative flex items-center justify-center pb-4 main-title-container pt-12 sm:pt-16 md:pt-12"
                 suppressHydrationWarning
               >
                 {" "}
