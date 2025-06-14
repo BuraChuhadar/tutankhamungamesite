@@ -360,11 +360,10 @@ img[src="/assets/images/main-title.png"] {
     isolation: isolate !important;
     transform: translateZ(0) !important;
   }
-
   /* Root page transitions with consistent timing */
   ::view-transition-old(root),
   ::view-transition-new(root) {
-    animation-duration: 1.4s;
+    animation-duration: 0.8s;
     animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     animation-fill-mode: both;
   }
@@ -396,7 +395,6 @@ img[src="/assets/images/main-title.png"] {
     transform: translateY(2rem) translateZ(1500px) !important;
     will-change: auto !important;
   }
-
   /* Sand crumbling elements - unified timing */
   ::view-transition-old(crumble-element),
   ::view-transition-old(main-intro),
@@ -405,7 +403,7 @@ img[src="/assets/images/main-title.png"] {
   ::view-transition-old(post-preview) {
     animation-name: sand-crumble-out;
     z-index: -1;
-    animation-duration: 1.6s;
+    animation-duration: 0.9s;
     animation-timing-function: cubic-bezier(0.4, 0, 0.8, 1);
     animation-fill-mode: both;
     animation-delay: var(--preview-delay, 0s);
@@ -418,18 +416,17 @@ img[src="/assets/images/main-title.png"] {
   ::view-transition-new(post-preview) {
     animation-name: sand-reform-in;
     z-index: -1;
-    animation-duration: 1.6s;
+    animation-duration: 0.9s;
     animation-timing-function: cubic-bezier(0.2, 0, 0.6, 1);
     animation-fill-mode: both;
     animation-delay: var(--preview-delay, 0s);
-  }  /* Hero images with smooth sliding - let browser handle morphing automatically */
-  /*
+  }/* Hero images with smooth sliding */
   ::view-transition-old(hero-image),
   ::view-transition-old(dev-blog-image),
   ::view-transition-old(hero-image-housemanagterandoadmanager),
   ::view-transition-old(hero-image-villagersinthemaking) {
     animation-name: hero-slide-out;
-    animation-duration: 1.4s;
+    animation-duration: 0.8s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation-fill-mode: both;
   }
@@ -439,12 +436,10 @@ img[src="/assets/images/main-title.png"] {
   ::view-transition-new(hero-image-housemanagterandoadmanager),
   ::view-transition-new(hero-image-villagersinthemaking) {
     animation-name: hero-slide-in;
-    animation-duration: 1.4s;
+    animation-duration: 0.8s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation-fill-mode: both;
-  }
-  */
-  /* Title animations */
+  }  /* Title animations */
   ::view-transition-old(main-title),
   ::view-transition-old(page-title),
   ::view-transition-old(hero-title),
@@ -454,7 +449,7 @@ img[src="/assets/images/main-title.png"] {
   ::view-transition-old(hero-title-housemanagterandoadmanager),
   ::view-transition-old(hero-title-villagersinthemaking) {
     animation-name: title-slide-out;
-    animation-duration: 1.3s;
+    animation-duration: 0.7s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation-fill-mode: both;
   }
@@ -468,16 +463,15 @@ img[src="/assets/images/main-title.png"] {
   ::view-transition-new(hero-title-housemanagterandoadmanager),
   ::view-transition-new(hero-title-villagersinthemaking) {
     animation-name: title-slide-in;
-    animation-duration: 1.3s;
+    animation-duration: 0.7s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation-fill-mode: both;
-  }
-  /* Content transitions */
+  }  /* Content transitions */
   ::view-transition-old(blog-content),
   ::view-transition-old(blog-content-housemanagterandoadmanager),
   ::view-transition-old(blog-content-villagersinthemaking) {
     animation-name: content-slide-out;
-    animation-duration: 1.2s;
+    animation-duration: 0.6s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation-fill-mode: both;
   }
@@ -486,36 +480,34 @@ img[src="/assets/images/main-title.png"] {
   ::view-transition-new(blog-content-housemanagterandoadmanager),
   ::view-transition-new(blog-content-villagersinthemaking) {
     animation-name: content-slide-in;
-    animation-duration: 1.2s;
+    animation-duration: 0.6s;
     animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation-fill-mode: both;
   }
-
   /* Back button with bounce */
   ::view-transition-old(back-button) {
     animation-name: button-bounce-out;
-    animation-duration: 1.0s;
+    animation-duration: 0.5s;
     animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     animation-fill-mode: both;
   }
 
   ::view-transition-new(back-button) {
     animation-name: button-bounce-in;
-    animation-duration: 1.0s;
+    animation-duration: 0.5s;
     animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
     animation-fill-mode: both;
-  }
-  /* Navigation elements */
+  }  /* Navigation elements */
   ::view-transition-old(nav-element) {
     animation-name: nav-slide-up-out;
-    animation-duration: 0.8s;
+    animation-duration: 0.4s;
     animation-timing-function: ease-out;
     animation-fill-mode: both;
   }
 
   ::view-transition-new(nav-element) {
     animation-name: nav-slide-down-in;
-    animation-duration: 0.8s;
+    animation-duration: 0.4s;
     animation-timing-function: ease-out;
     animation-fill-mode: both;
   }
