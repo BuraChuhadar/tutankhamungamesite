@@ -53,10 +53,19 @@
   pointer-events: none;
   z-index: -1;
   opacity: 0.15;
-  background: url('/assets/images/background-light.png');
   background-repeat: repeat;
   background-size: 20%;
   background-position: center;
+}
+
+/* Light mode background pattern */
+:global([data-mode="light"]) .backgroundPattern {
+  background-image: url('/assets/images/background-light.png');
+}
+
+/* Dark mode background pattern */
+:global([data-mode="dark"]) .backgroundPattern {
+  background-image: url('/assets/images/background-dark.png');
 }
 
 .pyramidAccent {
