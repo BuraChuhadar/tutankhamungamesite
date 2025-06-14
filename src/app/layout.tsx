@@ -5,6 +5,9 @@ import { Space_Grotesk, Noto_Sans } from "next/font/google";
 import { ThemeProvider } from "./_components/theme-context";
 import { ClientThemeSwitcher } from "./_components/client-theme-switcher";
 import { ClientDecorativeElements } from "./_components/client-decorative-elements";
+import { PageTransitionProvider } from "./_components/page-transition-provider";
+import { ViewTransitionsStatus } from "./_components/view-transitions-status";
+import { ScrollRestoration } from "./_components/scroll-restoration";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -85,24 +88,48 @@ export default function RootLayout({
         className={`relative flex size-full min-h-screen flex-col bg-[#f9f6f2] dark:bg-[#1f1a14] text-[#2d1c00] dark:text-[#f5e9d6] group/design-root overflow-x-hidden ${spaceGrotesk.className}`}
         suppressHydrationWarning
       >
+        {" "}
         <ThemeProvider>
-          <ClientDecorativeElements />
-          <ClientThemeSwitcher />          <div className="layout-container flex h-full grow flex-col relative z-10" suppressHydrationWarning>
-            <div className="absolute inset-0 bg-gradient-to-b from-[#fffbe8]/30 to-transparent dark:from-[#c2881b]/10 dark:to-transparent" suppressHydrationWarning></div>
-            <div className="relative z-30 flex items-center justify-center py-4" suppressHydrationWarning>
-              <img
-                src="/assets/images/main-title.png"
-                alt="Tutankhamun: Builders of the Eternal"
-                className="h-72 md:h-96 lg:h-128 xl:h-144 2xl:h-160 w-auto transform translate-y-12 logo-shadow"
+          <PageTransitionProvider>
+            <ScrollRestoration />
+            <ClientDecorativeElements />
+            <ClientThemeSwitcher />{" "}
+            <div
+              className="layout-container flex h-full grow flex-col relative z-10"
+              suppressHydrationWarning
+            >
+              <div
+                className="absolutebg-gradient-to-b from-[#fffbe8]/30 to-transparent dark:from-[#c2881b]/10 dark:to-transparent"
                 suppressHydrationWarning
-              />
-            </div>            <div className="px-40 flex flex-1 justify-center py-5" suppressHydrationWarning>
-              <div className="layout-content-container flex flex-col max-w-[1200px] flex-1" suppressHydrationWarning>
-                {children}
+              ></div>{" "}
+              <div
+                className="relative z-[999999] flex items-center justify-center pb-4 main-title-container pt-12"
+                suppressHydrationWarning
+              >
+                {" "}
+                <img
+                  src="/assets/images/main-title.png"
+                  alt="Tutankhamun: Builders of the Eternal"
+                  className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static translate-y-8 md:translate-y-8 lg:translate-y-8 xl:translate-y-8 2xl:translate-y-8 "
+                  style={{ viewTransitionName: "none" }}
+                  suppressHydrationWarning
+                />
               </div>
-            </div>
-          </div>
+              <div
+                className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center"
+                suppressHydrationWarning
+              >
+                <div
+                  className="layout-content-container flex flex-col max-w-[1200px] flex-1"
+                  suppressHydrationWarning
+                >
+                  {children}
+                </div>
+              </div>{" "}
+            </div>{" "}
+          </PageTransitionProvider>
           <Footer />
+          <ViewTransitionsStatus />
         </ThemeProvider>
       </body>
     </html>

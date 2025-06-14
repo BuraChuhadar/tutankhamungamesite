@@ -11,10 +11,10 @@ export function ClientDecorativeElements() {
   }, []);
   // Always render the elements to prevent hydration mismatch
   return (
-    <>
-      <div className={styles.backgroundPattern} suppressHydrationWarning />
+    <div className="decorative-background-container">
+      <div className={`${styles.backgroundPattern} static-background-pattern`} suppressHydrationWarning />
       <div className={styles.pyramidAccent} suppressHydrationWarning />
       <div className={styles.gameAccents} suppressHydrationWarning />
-    </>
+    </div>
   );
 }

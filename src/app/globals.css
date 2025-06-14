@@ -8,6 +8,25 @@
   --font-noto-sans: 'Noto Sans', sans-serif;
 }
 
+/* CSS custom properties for footer theming */
+:root {
+  --footer-bg: #fffbe8;
+  --footer-border: #e6e1d5;
+  --footer-text: #2d1c00;
+}
+
+[data-mode="dark"] {
+  --footer-bg: #1f1a14;
+  --footer-border: #40362b;
+  --footer-text: #f5e9d6;
+}
+
+.dark {
+  --footer-bg: #1f1a14;
+  --footer-border: #40362b;
+  --footer-text: #f5e9d6;
+}
+
 /* Base font family */
 html {
   font-family: var(--font-space-grotesk);
@@ -25,19 +44,25 @@ html {
   background: #ffffffcc;
   border-radius: 1rem;
   box-shadow: 0 4px 24px 0 #e6e1d5;
-  margin-top: -11rem;
+  margin-top: -15rem;
   position: relative;
   z-index: 20;
-  padding-top: 7rem;
+  padding-top: 9rem;
+  /* Prevent shadow from affecting footer */
+  margin-bottom: 2rem;
+  overflow: hidden;
 }
 [data-mode="dark"] .layout-content-container {
   background: #1f1a14cc;
   border-radius: 1rem;
   box-shadow: 0 4px 24px 0 #40362b;
-  margin-top: -11rem;
+  margin-top: -15rem;
   position: relative;
   z-index: 20;
-  padding-top: 7rem;
+  padding-top: 9rem;
+  /* Prevent shadow from affecting footer */
+  margin-bottom: 2rem;
+  overflow: hidden;
 }
 [data-mode="light"] .post-preview, [data-mode="light"] .development-blog {
   background: #fff;
@@ -55,17 +80,6 @@ html {
 }
 [data-mode="light"] .shadow-md {
   box-shadow: 0 8px 30px #e6e1d5;
-}
-[data-mode="light"] footer {
-  background: #fffbe8;
-  color: #2d1c00;
-  border-top: 1px solid #e6e1d5;
-}
-[data-mode="light"] footer a {
-  color: #c2881b;
-}
-[data-mode="light"] footer a:hover {
-  color: #8b6914;
 }
 [data-mode="light"] .dev-blog-intro {
   color: #6b4f1d;
@@ -130,4 +144,1062 @@ html {
 
 [data-mode="dark"] .logo-shadow {
   filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Ensure header and back button are always clickable */
+header, h2 {
+  position: relative;
+  z-index: 100 !important;
+}
+
+/* Make sure all links in headers are clickable */
+header a, h2 a {
+  position: relative;
+  z-index: 101 !important;
+  pointer-events: auto !important;
+}
+
+/* Ensure the layout content container doesn't interfere with header */
+.layout-content-container {
+  position: relative;
+  z-index: 20 !important;
+}
+
+/* Completely static main title image - no animations whatsoever */
+.main-title-static,
+.main-title-container {
+  view-transition-name: none !important;
+  animation: none !important;
+  transition: none !important;
+  transform-origin: center !important;
+  will-change: auto !important;
+  /* Keep minimal styling to avoid conflicts with Tailwind */
+  z-index: 99999 !important;
+  position: relative !important;
+}
+
+/* Ensure main title container always stays on top */
+.main-title-container {
+  z-index: 99999 !important;
+  position: relative !important;
+}
+
+/* Prevent any transitions on the main title image */
+img[src="/assets/images/main-title.png"] {
+  view-transition-name: none !important;
+  animation: none !important;
+  transition: none !important;
+  transform-origin: center !important;
+  will-change: auto !important;
+  /* Simple positioning and z-index */
+  margin: 0 auto !important;
+  z-index: 99999 !important;
+  position: relative !important;
+}
+
+/* Force static behavior on main title during all transitions */
+@supports (view-transition-name: none) {
+  /* Completely exclude main title from ALL transitions */
+  .main-title-static,
+  .main-title-container,
+  img[src="/assets/images/main-title.png"] {
+    view-transition-name: none !important;
+    animation: none !important;
+    transition: none !important;
+    contain: layout style paint;
+    isolation: isolate;
+    z-index: 99999 !important;
+    position: relative !important;  }/* Responsive positioning to prevent sliding */
+  .main-title-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Ensure main title stays on top during transitions */
+  .main-title-container,
+  .main-title-static {
+    z-index: 99999 !important;
+    position: relative !important;
+  }
+
+  /* Prevent layout-content-container from overlapping main title during transitions */
+  .layout-content-container {
+    z-index: 20 !important;
+  }
+
+  @media (min-width: 640px) {
+    .main-title-container {
+      padding-left: 2rem !important;
+      padding-right: 2rem !important;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .main-title-container {
+      padding-left: 3rem !important;
+      padding-right: 3rem !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .main-title-container {
+      padding-left: 4rem !important;
+      padding-right: 4rem !important;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .main-title-container {
+      padding-left: 6rem !important;
+      padding-right: 6rem !important;
+    }  }  /* Stacking context protection during view transitions */
+  .main-title-container,
+  .main-title-static,
+  img[src="/assets/images/main-title.png"] {
+    z-index: 99999 !important;
+    position: relative !important;
+    isolation: isolate !important;
+    contain: layout style paint !important;
+  }
+
+  /* Force main title above ALL view transition layers */
+  ::view-transition,
+  ::view-transition-group(*),
+  ::view-transition-image-pair(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    z-index: 99998 !important;
+  }
+  /* Keep main title elements at the absolute top */
+  .main-title-container,
+  .main-title-static,
+  img[src="/assets/images/main-title.png"],
+  .main-title-container * {
+    z-index: 999999 !important;
+    position: relative !important;
+    isolation: isolate !important;
+  }
+
+  /* Ensure main title stays above view transition root */
+  html:has(::view-transition) img[src="/assets/images/main-title.png"] {
+    z-index: 9999999 !important;
+    position: relative !important;
+    isolation: isolate !important;
+    transform: translateZ(0) !important;
+  }
+
+  /* Root page transitions with consistent timing */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 2s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    animation-fill-mode: both;
+  }
+
+  ::view-transition-old(root) {
+    animation-name: egyptian-slide-out;
+  }
+  ::view-transition-new(root) {
+    animation-name: egyptian-slide-in;
+  } /* Super specific main-title.png protection in ALL states */
+  img[src="/assets/images/main-title.png"],
+  div img[src="/assets/images/main-title.png"],
+  * img[src="/assets/images/main-title.png"] {
+    z-index: 2147483647 !important;
+    position: relative !important;
+    isolation: isolate !important;
+    transform: translateY(2rem) translateZ(999px) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+    contain: layout style paint !important;
+  }
+
+  /* Force main-title.png to be the absolute top element */
+  img[src="/assets/images/main-title.png"] {
+    z-index: 2147483647 !important;
+    position: relative !important;
+    isolation: isolate !important;
+    transform: translateY(2rem) translateZ(1500px) !important;
+    will-change: auto !important;
+  }
+
+  /* Sand crumbling elements - unified timing */
+  ::view-transition-old(crumble-element),
+  ::view-transition-old(main-intro),
+  ::view-transition-old(more-stories-section),
+  ::view-transition-old(stories-grid),
+  ::view-transition-old(post-preview) {
+    animation-name: sand-crumble-out;
+    z-index: -1;
+    animation-duration: 1.6s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.8, 1);
+    animation-fill-mode: both;
+    animation-delay: var(--preview-delay, 0s);
+  }
+
+  ::view-transition-new(crumble-element),
+  ::view-transition-new(main-intro),
+  ::view-transition-new(more-stories-section),
+  ::view-transition-new(stories-grid),
+  ::view-transition-new(post-preview) {
+    animation-name: sand-reform-in;
+    z-index: -1;
+    animation-duration: 1.6s;
+    animation-timing-function: cubic-bezier(0.2, 0, 0.6, 1);
+    animation-fill-mode: both;
+    animation-delay: var(--preview-delay, 0s);
+  }
+
+  /* Hero images with smooth sliding */
+  ::view-transition-old(hero-image),
+  ::view-transition-old(dev-blog-image) {
+    animation-name: hero-slide-out;
+    animation-duration: 1.4s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: both;
+  }
+
+  ::view-transition-new(hero-image),
+  ::view-transition-new(dev-blog-image) {
+    animation-name: hero-slide-in;
+    animation-duration: 1.4s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: both;
+  }
+
+  /* Title animations */
+  ::view-transition-old(main-title),
+  ::view-transition-old(page-title),
+  ::view-transition-old(hero-title),
+  ::view-transition-old(post-title) {
+    animation-name: title-slide-out;
+    animation-duration: 1.3s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: both;
+  }
+
+  ::view-transition-new(main-title),
+  ::view-transition-new(page-title),
+  ::view-transition-new(hero-title),
+  ::view-transition-new(post-title) {
+    animation-name: title-slide-in;
+    animation-duration: 1.3s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: both;
+  }
+
+  /* Content transitions */
+  ::view-transition-old(blog-content) {
+    animation-name: content-slide-out;
+    animation-duration: 1.2s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: both;
+  }
+
+  ::view-transition-new(blog-content) {
+    animation-name: content-slide-in;
+    animation-duration: 1.2s;
+    animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation-fill-mode: both;
+  }
+
+  /* Back button with bounce */
+  ::view-transition-old(back-button) {
+    animation-name: button-bounce-out;
+    animation-duration: 1.0s;
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation-fill-mode: both;
+  }
+
+  ::view-transition-new(back-button) {
+    animation-name: button-bounce-in;
+    animation-duration: 1.0s;
+    animation-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation-fill-mode: both;
+  }
+  /* Navigation elements */
+  ::view-transition-old(nav-element) {
+    animation-name: nav-slide-up-out;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+  }
+
+  ::view-transition-new(nav-element) {
+    animation-name: nav-slide-down-in;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
+  }
+}
+
+/* Egyptian-themed page transitions with sand effects */
+@keyframes egyptian-slide-out {
+  0% { 
+    opacity: 1;
+    filter: blur(0px) sepia(0%);
+  }
+  30% {
+    opacity: 0.8;
+    filter: blur(1px) sepia(20%);
+  }
+  60% {
+    opacity: 0.4;
+    filter: blur(2px) sepia(40%);
+  }
+  100% { 
+    opacity: 0;
+    filter: blur(4px) sepia(80%);
+  }
+}
+
+@keyframes egyptian-slide-in {
+  0% { 
+    opacity: 0;
+    filter: blur(4px) sepia(80%);
+  }
+  40% {
+    opacity: 0.4;
+    filter: blur(2px) sepia(40%);
+  }
+  70% {
+    opacity: 0.8;
+    filter: blur(1px) sepia(20%);
+  }
+  100% { 
+    opacity: 1;
+    filter: blur(0px) sepia(0%);
+  }
+}
+
+/* Sand crumbling effect for disappearing elements */
+@keyframes sand-crumble-out {
+  0% { 
+    opacity: 1;
+    border:0;
+    z-index: 1;
+    transform: scale(1) rotateX(0deg);
+    filter: blur(0px) sepia(0%) brightness(1) hue-rotate(0deg);
+    clip-path: inset(0% 0% 0% 0%);
+    mask: radial-gradient(circle at center, black 100%, transparent 100%);
+  }
+  20% {
+    opacity: 0.95;
+    z-index: 1;
+    border:0;
+    transform: scale(0.99) rotateX(-1deg);
+    filter: blur(0.2px) sepia(15%) brightness(0.95) hue-rotate(20deg);
+    clip-path: inset(0% 0% 2% 0%);
+    mask: radial-gradient(circle at center, black 98%, transparent 100%);
+  }
+  40% {
+    opacity: 0.8;
+    z-index: 1;
+    border:0;
+    transform: scale(0.96) rotateX(-3deg);
+    filter: blur(1px) sepia(40%) brightness(0.85) hue-rotate(30deg);
+    clip-path: inset(0% 0% 15% 0%);
+    mask: radial-gradient(circle at center, black 85%, transparent 100%);
+  }
+  60% {
+    opacity: 0.6;
+    z-index: 1;
+    border:0;
+    transform: scale(0.91) rotateX(-6deg);
+    filter: blur(2px) sepia(65%) brightness(0.7) hue-rotate(40deg);
+    clip-path: inset(0% 0% 35% 0%);
+    mask: radial-gradient(circle at center, black 65%, transparent 100%);
+  }
+  80% {
+    opacity: 0.3;
+    z-index: 1;
+    border:0;
+    transform: scale(0.84) rotateX(-12deg);
+    filter: blur(4px) sepia(85%) brightness(0.5) hue-rotate(50deg);
+    clip-path: inset(0% 0% 65% 0%);
+    mask: radial-gradient(circle at center, black 35%, transparent 100%);
+  }
+  100% { 
+    opacity: 0;
+    z-index: 1;
+    border:0;
+    transform: scale(0.7) rotateX(-20deg);
+    filter: blur(8px) sepia(100%) brightness(0.3) hue-rotate(60deg);
+    clip-path: inset(0% 0% 100% 0%);
+    mask: radial-gradient(circle at center, black 0%, transparent 100%);
+  }
+}
+
+/* Sand reformation effect for appearing elements */
+@keyframes sand-reform-in {
+  0% {
+    z-index: -1;
+    opacity: 0;
+    transform: scale(0.7) rotateX(20deg);
+    filter: blur(8px) sepia(100%) brightness(0.3) hue-rotate(60deg);
+    clip-path: inset(100% 0% 0% 0%);
+    mask: radial-gradient(circle at center, black 0%, transparent 100%);
+    border:0;
+  }
+  20% {
+    z-index: -1;
+    opacity: 0.3;
+    transform: scale(0.84) rotateX(12deg);
+    filter: blur(4px) sepia(85%) brightness(0.5) hue-rotate(50deg);
+    clip-path: inset(65% 0% 0% 0%);
+    mask: radial-gradient(circle at center, black 35%, transparent 100%);
+    border:0;
+  }
+  40% {
+    z-index: -1;
+    opacity: 0.6;
+    transform: scale(0.91) rotateX(6deg);
+    filter: blur(2px) sepia(65%) brightness(0.7) hue-rotate(40deg);
+    clip-path: inset(35% 0% 0% 0%);
+    mask: radial-gradient(circle at center, black 65%, transparent 100%);
+    border:0;
+  }
+  60% {
+    z-index: -1;
+    opacity: 0.8;
+    transform: scale(0.96) rotateX(3deg);
+    filter: blur(1px) sepia(40%) brightness(0.85) hue-rotate(30deg);
+    clip-path: inset(15% 0% 0% 0%);
+    mask: radial-gradient(circle at center, black 85%, transparent 100%);
+    border:0;
+  }
+  80% {
+    z-index: -1;
+    opacity: 0.95;
+    transform: scale(0.99) rotateX(1deg);
+    filter: blur(0.2px) sepia(15%) brightness(0.95) hue-rotate(20deg);
+    clip-path: inset(2% 0% 0% 0%);
+    mask: radial-gradient(circle at center, black 98%, transparent 100%);
+    border:0;
+  }
+  100% {
+    z-index: -1;
+    opacity: 1;
+    transform: scale(1) rotateX(0deg);
+    filter: blur(0px) sepia(0%) brightness(1) hue-rotate(0deg);
+    clip-path: inset(0% 0% 0% 0%);
+    mask: radial-gradient(circle at center, black 100%, transparent 100%);
+    border:0;
+  }
+}
+
+/* Title sliding animations */
+@keyframes title-slide-out {
+  0% { 
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% { 
+    opacity: 0;
+  }
+}
+
+@keyframes title-slide-in {
+  0% { 
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.8;
+  }
+  100% { 
+    opacity: 1;
+  }
+}
+
+/* Content sliding animations */
+@keyframes content-slide-out {
+  0% { 
+    opacity: 1;
+  }
+  100% { 
+    opacity: 0;
+  }
+}
+
+@keyframes content-slide-in {
+  0% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+  }
+}
+
+/* Hero image scale and slide */
+@keyframes hero-scale-slide-out {
+  0% { 
+    opacity: 1;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 0.6;
+    filter: brightness(0.8);
+  }
+  100% { 
+    opacity: 0;
+    filter: brightness(0.5);
+  }
+}
+
+@keyframes hero-scale-slide-in {
+  0% { 
+    opacity: 0;
+    filter: brightness(0.5);
+  }
+  50% {
+    opacity: 0.6;
+    filter: brightness(0.8);
+  }
+  100% { 
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+/* Smooth hero image sliding for transitions */
+@keyframes hero-slide-out {
+  0% { 
+    opacity: 1;
+    filter: brightness(1) contrast(1);
+  }
+  30% {
+    opacity: 0.8;
+    filter: brightness(0.9) contrast(1.1);
+  }
+  70% {
+    opacity: 0.4;
+    filter: brightness(0.7) contrast(1.3);
+  }
+  100% { 
+    opacity: 0;
+    filter: brightness(0.4) contrast(1.5);
+  }
+}
+
+@keyframes hero-slide-in {
+  0% { 
+    opacity: 0;
+    filter: brightness(0.4) contrast(1.5);
+  }
+  30% {
+    opacity: 0.4;
+    filter: brightness(0.7) contrast(1.3);
+  }
+  70% {
+    opacity: 0.8;
+    filter: brightness(0.9) contrast(1.1);
+  }
+  100% { 
+    opacity: 1;
+    filter: brightness(1) contrast(1);
+  }
+}
+
+/* Button bounce animations */
+@keyframes button-bounce-out {
+  0% { 
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% { 
+    opacity: 0;
+  }
+}
+
+@keyframes button-bounce-in {
+  0% { 
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% { 
+    opacity: 1;
+  }
+}
+
+/* Card flip animations for post previews */
+@keyframes card-flip-out {
+  0% { 
+    opacity: 1;
+    filter: brightness(1);
+  }
+  30% {
+    opacity: 0.8;
+    filter: brightness(0.9);
+  }
+  100% { 
+    opacity: 0;
+    filter: brightness(0.6);
+  }
+}
+
+@keyframes card-flip-in {
+  0% { 
+    opacity: 0;
+    filter: brightness(0.6);
+  }
+  30% {
+    opacity: 0.8;
+    filter: brightness(0.9);
+  }
+  100% { 
+    opacity: 1;
+    filter: brightness(1);
+  }
+}
+
+/* Navigation element slide animations */
+@keyframes nav-slide-up-out {
+  0% { 
+    opacity: 1;
+  }
+  100% { 
+    opacity: 0;
+  }
+}
+
+@keyframes nav-slide-down-in {
+  0% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+  }
+}
+
+/* Mystical title animations with Egyptian flair */
+@keyframes mystical-title-out {
+  0% { 
+    opacity: 1;
+    filter: blur(0px) drop-shadow(0 0 0px gold);
+  }
+  30% {
+    opacity: 0.7;
+    filter: blur(1px) drop-shadow(0 0 5px gold);
+  }
+  70% {
+    opacity: 0.3;
+    filter: blur(2px) drop-shadow(0 0 10px gold);
+  }
+  100% { 
+    opacity: 0;
+    filter: blur(5px) drop-shadow(0 0 20px gold);
+  }
+}
+
+@keyframes mystical-title-in {
+  0% { 
+    opacity: 0;
+    filter: blur(5px) drop-shadow(0 0 20px gold);
+  }
+  30% {
+    opacity: 0.3;
+    filter: blur(2px) drop-shadow(0 0 10px gold);
+  }
+  70% {
+    opacity: 0.7;
+    filter: blur(1px) drop-shadow(0 0 5px gold);
+  }
+  100% { 
+    opacity: 1;
+    filter: blur(0px) drop-shadow(0 0 0px gold);
+  }
+}
+
+/* Epic main title animations */
+@keyframes main-title-epic-out {
+  0% { 
+    z-index: -1;
+    opacity: 1;
+    filter: blur(0px) brightness(1) drop-shadow(0 0 0px #c2881b);
+  }
+  25% {
+    z-index: -1;
+    opacity: 0.8;
+    filter: blur(1px) brightness(0.9) drop-shadow(0 0 10px #c2881b);
+  }
+  50% {
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(3px) brightness(0.7) drop-shadow(0 0 20px #c2881b);
+  }
+  100% { 
+    z-index: -1;
+    opacity: 0;
+    filter: blur(8px) brightness(0.3) drop-shadow(0 0 40px #c2881b);
+  }
+}
+
+@keyframes main-title-epic-in {
+  0% { 
+     z-index: -1;
+    opacity: 0;
+    filter: blur(8px) brightness(0.3) drop-shadow(0 0 40px #c2881b);
+  }
+  25% {
+     z-index: -1;
+    opacity: 0.5;
+    filter: blur(3px) brightness(0.7) drop-shadow(0 0 20px #c2881b);
+  }
+  50% {
+     z-index: -1;
+    opacity: 0.8;
+    filter: blur(1px) brightness(0.9) drop-shadow(0 0 10px #c2881b);
+  }
+  100% { 
+     z-index: -1;
+    opacity: 1;
+    filter: blur(0px) brightness(1) drop-shadow(0 0 0px #c2881b);
+  }
+}
+
+/* Subtitle slide animations */
+@keyframes subtitle-fade-slide-out {
+  0% { 
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100% { 
+    opacity: 0;
+    filter: blur(2px);
+  }
+}
+
+@keyframes subtitle-fade-slide-in {
+  0% { 
+    opacity: 0;
+    filter: blur(2px);
+  }
+  100% { 
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* Section slide animations */
+@keyframes section-slide-out {
+  0% { 
+    opacity: 1;
+  }
+  100% { 
+    opacity: 0;
+  }
+}
+
+@keyframes section-slide-in {
+  0% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+  }
+}
+
+/* Grid cascade animations */
+@keyframes grid-cascade-out {
+  0% { 
+    opacity: 1;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+  100% { 
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+@keyframes grid-cascade-in {
+  0% { 
+    opacity: 0;
+    filter: blur(3px);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+  100% { 
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+/* Parallax background drift animations */
+@keyframes parallax-drift-out {
+  0% { 
+    opacity: 1;
+    filter: blur(0px) opacity(1);
+  }
+  50% {
+    opacity: 0.7;
+    filter: blur(1px) opacity(0.8);
+  }
+  100% { 
+    opacity: 0;
+    filter: blur(3px) opacity(0);
+  }
+}
+
+@keyframes parallax-drift-in {
+  0% { 
+    opacity: 0;
+    filter: blur(3px) opacity(0);
+  }
+  50% {
+    opacity: 0.7;
+    filter: blur(1px) opacity(0.8);
+  }
+  100% { 
+    opacity: 1;
+    filter: blur(0px) opacity(1);
+  }
+}
+
+/* Legacy animations for fallback */
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-out-left {
+  from { 
+    opacity: 1;
+  }
+  to { 
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-right {
+  from { 
+    opacity: 0;
+  }
+  to { 
+    opacity: 1;
+  }
+}
+
+@keyframes scale-fade-out {
+  from { 
+    opacity: 1;
+    transform: scale(1);
+  }
+  to { 
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes scale-fade-in {
+  from { 
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to { 
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Transition names for elements */
+.blog-preview {
+  view-transition-name: var(--transition-name);
+}
+
+.back-button {
+  view-transition-name: back-button;
+}
+
+/* Footer styling to ensure proper background and full width */
+footer {
+  background-color: var(--footer-bg) !important;
+  border-top: 1px solid var(--footer-border) !important;
+  color: var(--footer-text) !important;
+  min-height: 200px !important;
+  width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+  margin-top: 3rem !important;
+}
+
+[data-mode="dark"] footer {
+  background-color: #1f1a14 !important;
+  border-top: 1px solid #40362b !important;
+  color: #f5e9d6 !important;
+  min-height: 200px !important;
+  width: 100vw !important;
+}
+
+.dark footer {
+  background-color: #1f1a14 !important;
+  border-top: 1px solid #40362b !important;
+  color: #f5e9d6 !important;
+  min-height: 200px !important;
+  width: 100vw !important;
+}
+
+footer a {
+  color: #c2881b !important;
+}
+
+footer a:hover {
+  color: #8b6914 !important;
+}
+
+[data-mode="dark"] footer a,
+.dark footer a {
+  color: #d4a574 !important;
+}
+
+[data-mode="dark"] footer a:hover,
+.dark footer a:hover {
+  color: #c2881b !important;
+}
+
+/* Additional footer background rules for maximum specificity */
+html body footer,
+body footer,
+[data-mode="light"] footer,
+.light footer {
+  background-color: #fffbe8 !important;
+  background: #fffbe8 !important;
+  border-top: 1px solid #e6e1d5 !important;
+  color: #2d1c00 !important;
+  min-height: 200px !important;
+  width: 100% !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+html body [data-mode="dark"] footer,
+body [data-mode="dark"] footer,
+html body .dark footer,
+body .dark footer,
+[data-mode="dark"] html body footer,
+[data-mode="dark"] body footer {
+  background-color: #1f1a14 !important;
+  background: #1f1a14 !important;
+  border-top: 1px solid #40362b !important;
+  color: #f5e9d6 !important;
+  min-height: 200px !important;
+  width: 100% !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Ensure decorative background elements stay visible during transitions */
+.decorative-background-container {
+  view-transition-name: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  pointer-events: none !important;
+  z-index: -10 !important;
+  isolation: isolate !important;
+}
+
+/* Force background patterns to remain static during view transitions */
+.decorative-background-container > * {
+  view-transition-name: none !important;
+  animation: none !important;
+  transition: none !important;
+  opacity: inherit !important;
+  visibility: visible !important;
+  position: fixed !important;
+  pointer-events: none !important;
+}
+
+/* Additional protection for background pattern images */
+[class*="backgroundPattern"] {
+  view-transition-name: none !important;
+  animation: none !important;
+  transition: none !important;
+  opacity: 0.15 !important;
+  visibility: visible !important;
+  position: fixed !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+/* Protect pyramid accent elements from view transitions */
+[class*="pyramidAccent"] {
+  view-transition-name: none !important;
+  opacity: 0.08 !important;
+  visibility: visible !important;
+  position: fixed !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  /* Preserve the glow animation */
+  animation: pyramidGlow 8s ease-in-out infinite !important;
+}
+
+/* Ensure background images never fade during transitions */
+@supports (view-transition-name: none) {
+  [class*="backgroundPattern"],
+  .decorative-background-container [class*="backgroundPattern"] {
+    view-transition-name: none !important;
+    animation: none !important;
+    transition: none !important;
+    will-change: auto !important;
+    contain: layout style !important;
+    isolation: isolate !important;
+    opacity: 0.15 !important;
+    visibility: visible !important;
+    display: block !important;
+  }
+}
+
+/* Static background pattern protection */
+.static-background-pattern {
+  view-transition-name: none !important;
+  animation: none !important;
+  transition: none !important;
+  opacity: 0.15 !important;
+  visibility: visible !important;
+  display: block !important;
+  position: fixed !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+  background-attachment: fixed !important;
+  will-change: auto !important;
+  contain: layout style !important;
+  isolation: isolate !important;
+}
+
+/* Force the background images to remain during all phases of transitions */
+@supports (view-transition-name: none) {
+  .static-background-pattern {
+    view-transition-name: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Ensure background pattern is never captured in transition snapshots */
+  .static-background-pattern::before,
+  .static-background-pattern::after {
+    view-transition-name: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
 }
