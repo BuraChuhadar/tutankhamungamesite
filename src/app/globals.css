@@ -149,14 +149,44 @@ html {
 /* Ensure header and back button are always clickable */
 header, h2 {
   position: relative;
-  z-index: 100 !important;
+  z-index: 99999999 !important;
 }
 
 /* Make sure all links in headers are clickable */
 header a, h2 a {
   position: relative;
-  z-index: 101 !important;
+  z-index: 99999999 !important;
   pointer-events: auto !important;
+}
+
+/* Specific back button protection */
+.back-button {
+  z-index: 99999999 !important;
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+/* Ensure headers stay above main title during all states */
+header, h2, .back-button {
+  z-index: 99999999 !important;
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+/* Mobile-specific protection for back button clickability */
+@media (max-width: 640px) {
+  header, h2 {
+    margin-top: 4rem !important;
+    padding-top: 1rem !important;
+  }
+  
+  .back-button {
+    padding: 0.75rem !important;
+    margin: 0.5rem 0 !important;
+    min-height: 3rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+  }
 }
 
 /* Ensure the layout content container doesn't interfere with header */
@@ -174,13 +204,13 @@ header a, h2 a {
   transform-origin: center !important;
   will-change: auto !important;
   /* Keep minimal styling to avoid conflicts with Tailwind */
-  z-index: 99999 !important;
+  z-index: 2147483647 !important;
   position: relative !important;
 }
 
-/* Ensure main title container always stays on top */
+/* Ensure main title container always stays on top but below navigation */
 .main-title-container {
-  z-index: 99999 !important;
+  z-index: 2147483647 !important;
   position: relative !important;
 }
 
@@ -193,14 +223,13 @@ img[src="/assets/images/main-title.png"] {
   will-change: auto !important;
   /* Simple positioning and z-index */
   margin: 0 auto !important;
-  z-index: 99999 !important;
+  z-index: 2147483647 !important;
   position: relative !important;
 }
 
 /* Force static behavior on main title during all transitions */
 @supports (view-transition-name: none) {
-  /* Completely exclude main title from ALL transitions */
-  .main-title-static,
+  /* Completely exclude main title from ALL transitions */  .main-title-static,
   .main-title-container,
   img[src="/assets/images/main-title.png"] {
     view-transition-name: none !important;
@@ -208,17 +237,17 @@ img[src="/assets/images/main-title.png"] {
     transition: none !important;
     contain: layout style paint;
     isolation: isolate;
-    z-index: 99999 !important;
+    z-index: 2147483647 !important;
     position: relative !important;  }/* Responsive positioning to prevent sliding */
   .main-title-container {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
 
-  /* Ensure main title stays on top during transitions */
+  /* Ensure main title stays on top during transitions but below navigation */
   .main-title-container,
   .main-title-static {
-    z-index: 99999 !important;
+    z-index: 2147483647 !important;
     position: relative !important;
   }
 
@@ -256,33 +285,32 @@ img[src="/assets/images/main-title.png"] {
   .main-title-container,
   .main-title-static,
   img[src="/assets/images/main-title.png"] {
-    z-index: 99999 !important;
+    z-index: 2147483647 !important;
     position: relative !important;
     isolation: isolate !important;
     contain: layout style paint !important;
   }
 
-  /* Force main title above ALL view transition layers */
+  /* Force view transition layers below main title but above content */
   ::view-transition,
   ::view-transition-group(*),
   ::view-transition-image-pair(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {
-    z-index: 99998 !important;
-  }
-  /* Keep main title elements at the absolute top */
+    z-index: 2147483646 !important;
+  }/* Keep main title elements below navigation but above content */
   .main-title-container,
   .main-title-static,
   img[src="/assets/images/main-title.png"],
   .main-title-container * {
-    z-index: 999999 !important;
+    z-index: 2147483647 !important;
     position: relative !important;
     isolation: isolate !important;
   }
 
-  /* Ensure main title stays above view transition root */
+  /* Ensure main title stays above view transition root but below navigation */
   html:has(::view-transition) img[src="/assets/images/main-title.png"] {
-    z-index: 9999999 !important;
+    z-index: 2147483647 !important;
     position: relative !important;
     isolation: isolate !important;
     transform: translateZ(0) !important;
@@ -301,7 +329,7 @@ img[src="/assets/images/main-title.png"] {
   }
   ::view-transition-new(root) {
     animation-name: egyptian-slide-in;
-  } /* Super specific main-title.png protection in ALL states */
+  }  /* Super specific main-title.png protection in ALL states */
   img[src="/assets/images/main-title.png"],
   div img[src="/assets/images/main-title.png"],
   * img[src="/assets/images/main-title.png"] {
