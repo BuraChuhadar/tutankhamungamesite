@@ -125,3 +125,86 @@
   outline: none;
   box-shadow: 0 0 0 3px rgba(194, 136, 27, 0.5);
 }
+
+/* Table styles */
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  border: 1px solid #e6e1d5;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(45, 28, 0, 0.1);
+}
+
+:global(.dark) .markdown table {
+  border-color: #40362b;
+  background-color: #231a10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.markdown th {
+  background-color: #f9f6f2;
+  color: #2d1c00;
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid #e6e1d5;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+:global(.dark) .markdown th {
+  background-color: #1f1a14;
+  color: #c2881b;
+  border-bottom-color: #40362b;
+}
+
+.markdown td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e6e1d5;
+  color: #2d1c00;
+  vertical-align: top;
+}
+
+:global(.dark) .markdown td {
+  border-bottom-color: #40362b;
+  color: #f5e9d6;
+}
+
+.markdown tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown tr:nth-child(even) td {
+  background-color: #fffbe8;
+}
+
+:global(.dark) .markdown tr:nth-child(even) td {
+  background-color: #2a1f15;
+}
+
+/* Note: For highlighting improvement values (+/-), you can add CSS classes 
+   directly in markdown using HTML tags like:
+   <span class="improvement-positive">+122%</span>
+   <span class="improvement-negative">-87%</span> */
+
+.improvement-positive {
+  color: #16a34a !important;
+  font-weight: 600;
+}
+
+.improvement-negative {
+  color: #dc2626 !important;
+  font-weight: 600;
+}
+
+:global(.dark) .improvement-positive {
+  color: #22c55e !important;
+}
+
+:global(.dark) .improvement-negative {
+  color: #ef4444 !important;
+}
