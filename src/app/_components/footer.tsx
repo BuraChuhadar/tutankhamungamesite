@@ -18,6 +18,20 @@ export function Footer() {
             <span className="mx-3 font-medium coming-soon" suppressHydrationWarning>Coming Soon</span>
           </div>
         </div>
+        <div className="border-t border-gray-300 dark:border-[#40362b] pt-8 pb-8">
+          <div className="flex flex-col items-center text-center">
+            <p className="text-lg text-gray-600 dark:text-[#c9b896] mb-2" suppressHydrationWarning>
+              Have questions or feedback?
+            </p>
+            <a 
+              href="mailto:contact@tutankhamungame.com"
+              className="text-[#c2881b] dark:text-[#c2881b] font-semibold hover:underline transition-all duration-200"
+              suppressHydrationWarning
+            >
+              contact@tutankhamungame.com
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );
