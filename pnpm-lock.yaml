@@ -51,6 +51,9 @@ importers:
         specifier: ^11.1.2
         version: 11.1.2
     devDependencies:
+      '@types/debug':
+        specifier: ^4.1.12
+        version: 4.1.12
       '@types/node':
         specifier: ^20.14.8
         version: 20.17.57

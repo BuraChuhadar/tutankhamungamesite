@@ -1,5 +1,5 @@
 import Footer from "@/app/_components/footer";
-import { HOME_OG_IMAGE_URL } from "@/lib/constants";
+import { HOME_OG_IMAGE_URL, SITE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Space_Grotesk, Noto_Sans } from "next/font/google";
 import { ThemeProvider } from "./_components/theme-context";
@@ -24,10 +24,64 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: `Tutankhamun: Builders of the Eternal`,
   description: `Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.`,
+  keywords: [
+    "Tutankhamun",
+    "ancient Egypt",
+    "city builder",
+    "strategy game",
+    "civilization",
+    "Egyptian game",
+    "builders of the eternal"
+  ],
+  authors: [{ name: "Tutankhamun Game Development Team" }],
+  creator: "Tutankhamun Game Development Team",
+  publisher: "Tutankhamun Game Studio",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
+    title: "Tutankhamun: Builders of the Eternal",
+    description: "Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.",
+    url: SITE_URL,
+    siteName: "Tutankhamun: Builders of the Eternal",
+    images: [
+      {
+        url: HOME_OG_IMAGE_URL,
+        width: 1200,
+        height: 630,
+        alt: "Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tutankhamun: Builders of the Eternal",
+    description: "Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.",
     images: [HOME_OG_IMAGE_URL],
+    creator: "@tutankhamungame",
+    site: "@tutankhamungame",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code",
+    yandex: "your-yandex-verification-code",
   },
 };
 
@@ -82,6 +136,27 @@ export default function RootLayout({
           content="#1f1a14"
           media="(prefers-color-scheme: dark)"
         />
+        
+        {/* Additional Open Graph meta tags */}
+        <meta property="og:title" content="Tutankhamun: Builders of the Eternal" />
+        <meta property="og:description" content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization." />
+        <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game" />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Tutankhamun: Builders of the Eternal" />
+        
+        {/* Twitter Card meta tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Tutankhamun: Builders of the Eternal" />
+        <meta name="twitter:description" content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization." />
+        <meta name="twitter:image" content={HOME_OG_IMAGE_URL} />
+        <meta name="twitter:image:alt" content="Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game" />
+        <meta name="twitter:site" content="@tutankhamungame" />
+        <meta name="twitter:creator" content="@tutankhamungame" />
+        
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body
