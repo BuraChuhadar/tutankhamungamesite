@@ -2,6 +2,8 @@ import Footer from "@/app/_components/footer";
 import { HOME_OG_IMAGE_URL, SITE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Space_Grotesk, Noto_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "./_components/theme-context";
 import { ClientThemeSwitcher } from "./_components/client-theme-switcher";
 import { ClientDecorativeElements } from "./_components/client-decorative-elements";
@@ -24,7 +26,7 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL("https://tutankhamungame.com"),
   title: `Tutankhamun: Builders of the Eternal`,
   description: `Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.`,
   keywords: [
@@ -47,11 +49,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tutankhamun: Builders of the Eternal",
     description: "Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.",
-    url: SITE_URL,
+    url: "https://tutankhamungame.com",
     siteName: "Tutankhamun: Builders of the Eternal",
     images: [
       {
-        url: HOME_OG_IMAGE_URL,
+        url: "https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png",
         width: 1200,
         height: 630,
         alt: "Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game",
@@ -64,7 +66,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Tutankhamun: Builders of the Eternal",
     description: "Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.",
-    images: [HOME_OG_IMAGE_URL],
+    images: ["https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png"],
     creator: "@tutankhamungame",
     site: "@tutankhamungame",
   },
@@ -140,11 +142,11 @@ export default function RootLayout({
         {/* Additional Open Graph meta tags */}
         <meta property="og:title" content="Tutankhamun: Builders of the Eternal" />
         <meta property="og:description" content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization." />
-        <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+        <meta property="og:image" content="https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game" />
-        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:url" content="https://tutankhamungame.com" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Tutankhamun: Builders of the Eternal" />
         
@@ -152,7 +154,7 @@ export default function RootLayout({
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tutankhamun: Builders of the Eternal" />
         <meta name="twitter:description" content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization." />
-        <meta name="twitter:image" content={HOME_OG_IMAGE_URL} />
+        <meta name="twitter:image" content="https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png" />
         <meta name="twitter:image:alt" content="Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game" />
         <meta name="twitter:site" content="@tutankhamungame" />
         <meta name="twitter:creator" content="@tutankhamungame" />
@@ -204,6 +206,8 @@ export default function RootLayout({
           </PageTransitionProvider>
           <Footer />
         </ThemeProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
