@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "strategy game",
     "civilization",
     "Egyptian game",
-    "builders of the eternal"
+    "builders of the eternal",
   ],
   authors: [{ name: "Tutankhamun Game Development Team" }],
   creator: "Tutankhamun Game Development Team",
@@ -48,7 +48,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Tutankhamun: Builders of the Eternal",
-    description: "Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.",
+    description:
+      "Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.",
     url: "https://tutankhamungame.com",
     siteName: "Tutankhamun: Builders of the Eternal",
     images: [
@@ -65,7 +66,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Tutankhamun: Builders of the Eternal",
-    description: "Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.",
+    description:
+      "Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.",
     images: ["https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png"],
     creator: "@tutankhamungame",
     site: "@tutankhamungame",
@@ -138,27 +140,54 @@ export default function RootLayout({
           content="#1f1a14"
           media="(prefers-color-scheme: dark)"
         />
-        
+
         {/* Additional Open Graph meta tags */}
-        <meta property="og:title" content="Tutankhamun: Builders of the Eternal" />
-        <meta property="og:description" content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization." />
-        <meta property="og:image" content="https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png" />
+        <meta
+          property="og:title"
+          content="Tutankhamun: Builders of the Eternal"
+        />
+        <meta
+          property="og:description"
+          content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization."
+        />
+        <meta
+          property="og:image"
+          content="https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game" />
+        <meta
+          property="og:image:alt"
+          content="Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game"
+        />
         <meta property="og:url" content="https://tutankhamungame.com" />
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Tutankhamun: Builders of the Eternal" />
-        
+        <meta
+          property="og:site_name"
+          content="Tutankhamun: Builders of the Eternal"
+        />
+
         {/* Twitter Card meta tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tutankhamun: Builders of the Eternal" />
-        <meta name="twitter:description" content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization." />
-        <meta name="twitter:image" content="https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png" />
-        <meta name="twitter:image:alt" content="Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game" />
+        <meta
+          name="twitter:title"
+          content="Tutankhamun: Builders of the Eternal"
+        />
+        <meta
+          name="twitter:description"
+          content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization."
+        />
+        <meta
+          name="twitter:image"
+          content="https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png"
+        />
+        <meta
+          name="twitter:image:alt"
+          content="Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game"
+        />
         <meta name="twitter:site" content="@tutankhamungame" />
         <meta name="twitter:creator" content="@tutankhamungame" />
-        
+
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body
@@ -178,7 +207,8 @@ export default function RootLayout({
               <div
                 className="absolutebg-gradient-to-b from-[#fffbe8]/30 to-transparent dark:from-[#c2881b]/10 dark:to-transparent"
                 suppressHydrationWarning
-              ></div>{" "}              <div
+              ></div>{" "}
+              <div
                 className="relative flex items-center justify-center pb-4 main-title-container pt-12 sm:pt-16 md:pt-12"
                 suppressHydrationWarning
               >
