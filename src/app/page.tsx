@@ -3,6 +3,7 @@ import { HeroPost } from "@/app/_components/hero-post";
 import { ClientIntro } from "@/app/_components/client-intro";
 import { MoreStories } from "@/app/_components/more-stories";
 import { getAllPosts } from "@/lib/api";
+import { WaitlistSignup } from "@/app/_components/waitlist-signup";
 
 export default function Index() {
   const allPosts = getAllPosts();
@@ -14,6 +15,7 @@ export default function Index() {
     <main>
       <Container>
         <ClientIntro />
+        <WaitlistSignup />
         <HeroPost
           title={heroPost.title}
           coverImage={heroPost.coverImage}
