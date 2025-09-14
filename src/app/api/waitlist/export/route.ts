@@ -4,9 +4,20 @@ import { kv } from "@vercel/kv";
 // Simple token auth via query string or header
 function authorized(request: Request) {
   const url = new URL(request.url);
-  const token = url.searchParams.get("token") || request.headers.get("x-export-token");
+  const qsToken = url.searchParams.get("token");
+  const headerToken = request.headers.get("x-export-token");
+  const authHeader = request.headers.get("authorization");
+  const bearerToken = authHeader?.toLowerCase().startsWith("bearer ") ? authHeader.slice(7) : undefined;
+  const token = qsToken || headerToken || bearerToken;
   const expected = process.env.EXPORT_TOKEN;
-  return expected && token && token === expected;
+  if (process.env.NODE_ENV !== "production") {
+    const tlen = token?.length ?? 0;
+    const elen = expected?.length ?? 0;
+    // Dev-only diagnostics: lengths and equality only
+    // eslint-disable-next-line no-console
+    console.log("[waitlist/export] tokenLen=", tlen, "expectedLen=", elen, "equal=", Boolean(expected && token && token === expected));
+  }
+  return Boolean(expected && token && token === expected);
 }
 
 export async function GET(request: Request) {

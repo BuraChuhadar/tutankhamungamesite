@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "Tutankhamun: Builders of the Eternal",
     images: [
       {
-        url: "https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png",
+    url: HOME_OG_IMAGE_URL,
         width: 1200,
         height: 630,
         alt: "Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     title: "Tutankhamun: Builders of the Eternal",
     description:
       "Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.",
-    images: ["https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png"],
+  images: [HOME_OG_IMAGE_URL],
     creator: "@tutankhamungame",
     site: "@tutankhamungame",
   },
@@ -150,10 +150,7 @@ export default function RootLayout({
           property="og:description"
           content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization."
         />
-        <meta
-          property="og:image"
-          content="https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png"
-        />
+  <meta property="og:image" content={HOME_OG_IMAGE_URL} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta
@@ -177,10 +174,7 @@ export default function RootLayout({
           name="twitter:description"
           content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization."
         />
-        <meta
-          name="twitter:image"
-          content="https://tutankhamungame.com/assets/blog/images/gpuioptimzer.png"
-        />
+  <meta name="twitter:image" content={HOME_OG_IMAGE_URL} />
         <meta
           name="twitter:image:alt"
           content="Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game"
@@ -212,11 +206,19 @@ export default function RootLayout({
                 className="relative flex items-center justify-center pb-4 main-title-container pt-12 sm:pt-16 md:pt-12"
                 suppressHydrationWarning
               >
-                {" "}
+                {/* Dark mode title */}
                 <img
                   src="/assets/images/main-title.png"
                   alt="Tutankhamun: Builders of the Eternal"
-                  className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static translate-y-8 md:translate-y-8 lg:translate-y-8 xl:translate-y-8 2xl:translate-y-8 "
+                  className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-dark translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
+                  style={{ viewTransitionName: "none" }}
+                  suppressHydrationWarning
+                />
+                {/* Light mode title */}
+                <img
+                  src="/assets/images/main-title-light.png"
+                  alt="Tutankhamun: Builders of the Eternal"
+                  className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-light translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
                   style={{ viewTransitionName: "none" }}
                   suppressHydrationWarning
                 />

@@ -242,13 +242,15 @@ header, h2 {
 @media (max-width: 640px) {
   .main-title-container,
   .main-title-static,
-  img[src="/assets/images/main-title.png"] {
+  img[src="/assets/images/main-title.png"],
+  img[src="/assets/images/main-title-light.png"] {
     /* Don't interfere with clicks in header area */
     pointer-events: none !important;
   }
   
   /* But allow interactions with the image itself if needed */
-  .main-title-container img[src="/assets/images/main-title.png"] {
+  .main-title-container img[src="/assets/images/main-title.png"],
+  .main-title-container img[src="/assets/images/main-title-light.png"] {
     pointer-events: auto !important;
   }
 }
@@ -260,7 +262,8 @@ header, h2 {
 }
 
 /* Prevent any transitions on the main title image */
-img[src="/assets/images/main-title.png"] {
+img[src="/assets/images/main-title.png"],
+img[src="/assets/images/main-title-light.png"] {
   view-transition-name: none !important;
   animation: none !important;
   transition: none !important;
@@ -276,7 +279,8 @@ img[src="/assets/images/main-title.png"] {
 @supports (view-transition-name: none) {
   /* Completely exclude main title from ALL transitions */  .main-title-static,
   .main-title-container,
-  img[src="/assets/images/main-title.png"] {
+  img[src="/assets/images/main-title.png"],
+  img[src="/assets/images/main-title-light.png"] {
     view-transition-name: none !important;
     animation: none !important;
     transition: none !important;
@@ -329,7 +333,8 @@ img[src="/assets/images/main-title.png"] {
     }  }  /* Stacking context protection during view transitions */
   .main-title-container,
   .main-title-static,
-  img[src="/assets/images/main-title.png"] {
+  img[src="/assets/images/main-title.png"],
+  img[src="/assets/images/main-title-light.png"] {
     z-index: 2147483647 !important;
     position: relative !important;
     isolation: isolate !important;
@@ -347,6 +352,7 @@ img[src="/assets/images/main-title.png"] {
   .main-title-container,
   .main-title-static,
   img[src="/assets/images/main-title.png"],
+  img[src="/assets/images/main-title-light.png"],
   .main-title-container * {
     z-index: 2147483647 !important;
     position: relative !important;
@@ -354,7 +360,8 @@ img[src="/assets/images/main-title.png"] {
   }
 
   /* Ensure main title stays above view transition root but below navigation */
-  html:has(::view-transition) img[src="/assets/images/main-title.png"] {
+  html:has(::view-transition) img[src="/assets/images/main-title.png"],
+  html:has(::view-transition) img[src="/assets/images/main-title-light.png"] {
     z-index: 2147483647 !important;
     position: relative !important;
     isolation: isolate !important;
@@ -375,12 +382,15 @@ img[src="/assets/images/main-title.png"] {
     animation-name: egyptian-slide-in;
   }  /* Super specific main-title.png protection in ALL states */
   img[src="/assets/images/main-title.png"],
+  img[src="/assets/images/main-title-light.png"],
   div img[src="/assets/images/main-title.png"],
-  * img[src="/assets/images/main-title.png"] {
+  div img[src="/assets/images/main-title-light.png"],
+  * img[src="/assets/images/main-title.png"],
+  * img[src="/assets/images/main-title-light.png"] {
     z-index: 2147483647 !important;
     position: relative !important;
     isolation: isolate !important;
-    transform: translateY(2rem) translateZ(999px) !important;
+  transform: translateY(0.5rem) translateZ(999px) !important;
     opacity: 1 !important;
     visibility: visible !important;
     display: block !important;
@@ -388,13 +398,20 @@ img[src="/assets/images/main-title.png"] {
   }
 
   /* Force main-title.png to be the absolute top element */
-  img[src="/assets/images/main-title.png"] {
+  img[src="/assets/images/main-title.png"],
+  img[src="/assets/images/main-title-light.png"] {
     z-index: 2147483647 !important;
     position: relative !important;
     isolation: isolate !important;
-    transform: translateY(2rem) translateZ(1500px) !important;
+  transform: translateY(0.5rem) translateZ(1500px) !important;
     will-change: auto !important;
   }
+
+/* Switch between dark and light title images with strong specificity */
+html:not(.dark) img.main-title-dark[src="/assets/images/main-title.png"] { display: none !important; }
+html:not(.dark) img.main-title-light[src="/assets/images/main-title-light.png"] { display: block !important; }
+.dark img.main-title-dark[src="/assets/images/main-title.png"] { display: block !important; }
+.dark img.main-title-light[src="/assets/images/main-title-light.png"] { display: none !important; }
   /* Sand crumbling elements - unified timing */
   ::view-transition-old(crumble-element),
   ::view-transition-old(main-intro),

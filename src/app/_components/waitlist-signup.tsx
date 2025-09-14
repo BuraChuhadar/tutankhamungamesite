@@ -4,7 +4,9 @@ import { useState } from "react";
 
 export function WaitlistSignup() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "exists" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "exists" | "error"
+  >("idle");
   const [message, setMessage] = useState<string>("");
 
   async function onSubmit(e: React.FormEvent) {
@@ -37,16 +39,28 @@ export function WaitlistSignup() {
   }
 
   return (
-    <section className="mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-40 mb-10" aria-labelledby="waitlist-title">
+    <section
+      className="mx-4 sm:mx-8 md:mx-16 lg:mx-24 xl:mx-40 mb-10"
+      aria-labelledby="waitlist-title"
+    >
       <div className="bg-white/80 dark:bg-[#1f1a14]/80 border border-[#e6e1d5] dark:border-[#40362b] rounded-xl p-6 shadow-sm">
-        <h2 id="waitlist-title" className="text-2xl md:text-3xl font-bold mb-2 text-[#2d1c00] dark:text-[#f5e9d6]">
+        <h2
+          id="waitlist-title"
+          className="text-2xl md:text-3xl font-bold mb-2 text-[#2d1c00] dark:text-[#f5e9d6]"
+        >
           Join the waitlist
         </h2>
         <p className="text-[#6b4f1d] dark:text-[#beae9d] mb-4">
           Get updates on development milestones and early access opportunities.
         </p>
-        <form onSubmit={onSubmit} className="flex flex-col sm:flex-row gap-3" noValidate>
-          <label htmlFor="waitlist-email" className="sr-only">Email address</label>
+        <form
+          onSubmit={onSubmit}
+          className="flex flex-col sm:flex-row gap-3"
+          noValidate
+        >
+          <label htmlFor="waitlist-email" className="sr-only">
+            Email address
+          </label>
           <input
             id="waitlist-email"
             type="email"
@@ -67,12 +81,16 @@ export function WaitlistSignup() {
           </button>
         </form>
         {message && (
-          <p className="mt-3 text-sm text-[#6b4f1d] dark:text-[#beae9d]" role={status === "error" ? "alert" : undefined}>
+          <p
+            className="mt-3 text-sm text-[#6b4f1d] dark:text-[#beae9d]"
+            role={status === "error" ? "alert" : undefined}
+          >
             {message}
           </p>
         )}
         <p className="mt-2 text-xs text-[#9b7b3c]">
-          We’ll only use your email to contact you about this project. Unsubscribe anytime.
+          We’ll only use your email to contact you about this project.
+          Unsubscribe anytime.
         </p>
       </div>
     </section>

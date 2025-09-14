@@ -31,6 +31,9 @@ yarn-error.log*
 
 # local env files
 .env*.local
+# local secret scripts
+scripts/*.secrets.ps1
+scripts/*.csv
 
 # vercel
 .vercel
