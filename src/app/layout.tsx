@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     siteName: "Tutankhamun: Builders of the Eternal",
     images: [
       {
-    url: HOME_OG_IMAGE_URL,
+        url: HOME_OG_IMAGE_URL,
         width: 1200,
         height: 630,
         alt: "Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     title: "Tutankhamun: Builders of the Eternal",
     description:
       "Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.",
-  images: [HOME_OG_IMAGE_URL],
+    images: [HOME_OG_IMAGE_URL],
     creator: "@tutankhamungame",
     site: "@tutankhamungame",
   },
@@ -150,7 +150,7 @@ export default function RootLayout({
           property="og:description"
           content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization."
         />
-  <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+        <meta property="og:image" content={HOME_OG_IMAGE_URL} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta
@@ -174,7 +174,7 @@ export default function RootLayout({
           name="twitter:description"
           content="Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization."
         />
-  <meta name="twitter:image" content={HOME_OG_IMAGE_URL} />
+        <meta name="twitter:image" content={HOME_OG_IMAGE_URL} />
         <meta
           name="twitter:image:alt"
           content="Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game"
