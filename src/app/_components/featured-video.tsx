@@ -1,6 +1,6 @@
 export function FeaturedVideo() {
   return (
-  <section className="mt-20 mb-16 lg:mt-24 lg:mb-24">
+    <section className="mt-20 mb-16 lg:mt-24 lg:mb-24">
       <div className="relative overflow-hidden rounded-3xl border border-[#d4c1a5]/40 bg-gradient-to-br from-[#fff3df] via-[#f6e4c5] to-[#f1d9ab] px-5 py-8 shadow-[0_30px_80px_-40px_rgba(36,20,1,0.65)] transition-colors dark:border-[#a0762f]/30 dark:from-[#181008] dark:via-[#1e1409] dark:to-[#27180a] sm:px-8 sm:py-12">
         <div className="pointer-events-none absolute inset-0 opacity-35">
           <div className="absolute -left-24 -top-24 size-56 rounded-full bg-[#d8b178]/40 blur-3xl dark:bg-[#c2881b]/30" />
@@ -16,15 +16,16 @@ export function FeaturedVideo() {
               Watch the Intro Movie in Motion
             </h2>
             <p className="text-base leading-relaxed text-[#311f0b] dark:text-[#f3dcb7]">
-              Step into the opening cinematic for <em>Tutankhamun: Builders of the
-              Eternal</em>. This work-in-progress cut showcases our latest lighting
-              pass, character staging, and engineering works tying the whole city
-              together.
+              Step into the opening cinematic for{" "}
+              <em>Tutankhamun: Builders of the Eternal</em>. This
+              work-in-progress cut showcases our latest lighting pass, character
+              staging, and engineering works tying the whole city together.
             </p>
             <p className="text-base leading-relaxed text-[#2c1c09] dark:text-[#f7e5c9]">
-              The game invites you to build, balance, and defend an ancient Egyptian
-              dynasty. Every district you plan, from temples to engineering hubs,
-              shapes the prosperity and resilience of your citizens along the Nile.
+              The game invites you to build, balance, and defend an ancient
+              Egyptian dynasty. Every district you plan, from temples to
+              engineering hubs, shapes the prosperity and resilience of your
+              citizens along the Nile.
             </p>
             <ul className="space-y-2 text-sm font-medium text-[#3a240d] dark:text-[#f5e9d6]/90">
               <li className="flex items-center gap-2">

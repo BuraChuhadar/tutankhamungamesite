@@ -92,6 +92,21 @@ export function WaitlistSignup() {
           We’ll only use your email to contact you about this project.
           Unsubscribe anytime.
         </p>
+        <div className="mt-5 flex items-center justify-center gap-3 text-xs font-semibold uppercase tracking-[0.22em] text-[#9b7b3c] dark:text-[#cfbca7]">
+          <span className="h-px w-10 bg-[#d8c7a6] dark:bg-[#3a2b1b]" />
+          <span>or</span>
+          <span className="h-px w-10 bg-[#d8c7a6] dark:bg-[#3a2b1b]" />
+        </div>
+        <div className="mt-6 flex justify-center">
+          <a
+            href="https://discord.gg/2m2qch3m"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-md bg-[#5865f2] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#4752c4]"
+          >
+            Join our Discord
+          </a>
+        </div>
       </div>
     </section>
   );
