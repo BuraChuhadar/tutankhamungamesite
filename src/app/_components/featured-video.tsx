@@ -48,7 +48,7 @@ export function FeaturedVideo() {
             <div className="relative overflow-hidden rounded-2xl border border-[#e8d5b6]/50 bg-[#0e0700] shadow-[0_25px_60px_-40px_rgba(0,0,0,0.8)] dark:border-[#5e4115]/60">
               <div className="aspect-video">
                 <iframe
-                  src="https://player.mux.com/2IgiGCwA01Wh9OoLUsecE02uqgWc8nxz2wxE1v01T9SRO00?metadata-video-title=Intro+Movie&video-title=Intro+Movie"
+                  src="https://player.mux.com/ST01ugOPlgJSwf1TEhMh6RCon00301GYizh00I00op8K1AyE?metadata-video-title=Intro+Movie&video-title=Intro+Movie"
                   className="size-full"
                   allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture"
                   allowFullScreen
