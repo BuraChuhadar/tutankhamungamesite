@@ -97,12 +97,25 @@ export function WaitlistSignup() {
           <span>or</span>
           <span className="h-px w-10 bg-[#d8c7a6] dark:bg-[#3a2b1b]" />
         </div>
-        <div className="mt-6 flex justify-center">
+        <div className="mt-6 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a
+            href="https://store.steampowered.com/app/4009620/Tutankhamun__Builders_of_the_Eternal"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#171a21] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#2a475e] sm:w-auto"
+          >
+            <span>Wishlist on</span>
+            <img
+              src="/assets/images/steam.png"
+              alt="Steam"
+              className="h-6 w-auto"
+            />
+          </a>
           <a
             href="https://discord.gg/2m2qch3m"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-[#5865f2] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#4752c4]"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#5865f2] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#4752c4] sm:w-auto"
           >
             Join our Discord
           </a>

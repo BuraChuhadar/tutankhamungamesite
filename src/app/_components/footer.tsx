@@ -12,12 +12,19 @@ export function Footer() {
             Join the Builders of the Eternal
           </h3>
           <div className="flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-6 lg:pl-4 lg:w-1/2">
-            <div
-              className="mx-3 bg-gray-600 dark:bg-[#40362b] border border-gray-600 dark:border-[#40362b] text-gray-200 dark:text-[#f5e9d6] font-bold py-3 px-12 lg:px-8 mb-6 lg:mb-0 opacity-70 cursor-not-allowed"
-              suppressHydrationWarning
+            <a
+              href="https://store.steampowered.com/app/4009620/Tutankhamun__Builders_of_the_Eternal"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#171a21] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#2a475e]"
             >
-              Development in Progress
-            </div>
+              <span>Wishlist on</span>
+              <img
+                src="/assets/images/steam.png"
+                alt="Steam"
+                className="h-6 w-auto"
+              />
+            </a>
             <a
               href="https://discord.gg/2m2qch3m"
               target="_blank"
