@@ -30,15 +30,15 @@ export function FeaturedVideo() {
             <ul className="space-y-2 text-sm font-medium text-[#3a240d] dark:text-[#f5e9d6]/90">
               <li className="flex items-center gap-2">
                 <span className="inline-block size-2 rounded-full bg-[#c2881b] dark:bg-[#f1c27d]" />
-                Captured straight from the October milestone build
+                Official Intro Movie
               </li>
               <li className="flex items-center gap-2">
                 <span className="inline-block size-2 rounded-full bg-[#c2881b] dark:bg-[#f1c27d]" />
-                Celebrates new engineering complexes coming online
+                Steam Store page is now live
               </li>
               <li className="flex items-center gap-2">
                 <span className="inline-block size-2 rounded-full bg-[#c2881b] dark:bg-[#f1c27d]" />
-                Shows the performance gains discussed below
+                Wishlist now for Early Access updates
               </li>
             </ul>
           </div>
