@@ -1,6 +1,6 @@
 ---
 title: "Sockets Over Firewatchman: Bringing Hunter Animations to Life"
-excerpt: "Why we retired Firewatchman's prefab animations in favor of a socket-driven pipeline for HunterMan, and what it unlocks for combat readability."
+excerpt: "Why we chose a socket-driven pipeline for HunterMan over Firewatchman's prefab approach, and what it unlocks for combat readability."
 coverImage: "/assets/blog/images/2025-11-23-hunterman-sockets.png"
 date: "2025-11-23T00:00:00.000Z"
 author:
@@ -12,7 +12,7 @@ ogImage:
 
 # Moving Beyond Firewatchman's Prefabs
 
-HunterMan is our reference character for mid-game ostrich hunting, and he exposed a friction point: Firewatchman baked whole fire-extinguishing sequences into single prefab animations. They look fine when nothing changes, but as soon as stats or item skins vary, we are either duplicating prefabs or compromising on feedback.
+HunterMan is our reference character for early-game ostrich hunting, and he exposed a friction point: Firewatchman baked whole fire-extinguishing sequences into single prefab animations. They look fine when nothing changes, but as soon as stats or item skins vary, we are either duplicating prefabs or compromising on feedback.
 
 While we're keeping the existing Firewatchman assets for now, we'll be readdressing them later. Moving forward, new characters like HunterMan will use a socket-driven pipeline.
 
@@ -60,9 +60,10 @@ Sockets solve the rigidity. Instead of locking every motion into a monolithic cl
   Your browser does not support the video tag.
 </video>
 <p class="text-sm text-center text-gray-500 mt-2">The final result: fluid hunting animations with hot-swappable gear.</p>
-- Elemental clarity: Fire vs. frost vs. venom attacks use the same swing but emit distinct socket FX, so you read status at a glance.
-- Responsive tuning: Balance passes on attack speed or knockback propagate through the animation graph automatically, keeping HunterMan aligned with combat math.
-- Future-proofing: When we add dual-wielding or shield tech, we only define new socket payloads instead of duplicating Firewatchman prefabs.
+
+- **Visual clarity**: Different arrow types (flint vs. copper) use the same draw animation but show distinct meshes, so you know what you're firing.
+- **Responsive tuning**: Balance passes on draw speed or range propagate through the animation graph automatically, keeping HunterMan aligned with gameplay stats.
+- **Future-proofing**: When we add new bows or slings, we only define new socket payloads instead of duplicating Firewatchman prefabs.
 
 ---
 
