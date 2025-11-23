@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Footer from "@/app/_components/footer";
 import { HOME_OG_IMAGE_URL, SITE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
@@ -206,22 +207,24 @@ export default function RootLayout({
                 className="relative flex items-center justify-center pb-4 main-title-container pt-12 sm:pt-16 md:pt-12"
                 suppressHydrationWarning
               >
-                {/* Dark mode title */}
-                <img
-                  src="/assets/images/main-title.png"
-                  alt="Tutankhamun: Builders of the Eternal"
-                  className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-dark translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
-                  style={{ viewTransitionName: "none" }}
-                  suppressHydrationWarning
-                />
-                {/* Light mode title */}
-                <img
-                  src="/assets/images/main-title-light.png"
-                  alt="Tutankhamun: Builders of the Eternal"
-                  className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-light translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
-                  style={{ viewTransitionName: "none" }}
-                  suppressHydrationWarning
-                />
+                <Link href="/" className="contents">
+                  {/* Dark mode title */}
+                  <img
+                    src="/assets/images/main-title.png"
+                    alt="Tutankhamun: Builders of the Eternal"
+                    className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-dark translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
+                    style={{ viewTransitionName: "none" }}
+                    suppressHydrationWarning
+                  />
+                  {/* Light mode title */}
+                  <img
+                    src="/assets/images/main-title-light.png"
+                    alt="Tutankhamun: Builders of the Eternal"
+                    className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-light translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
+                    style={{ viewTransitionName: "none" }}
+                    suppressHydrationWarning
+                  />
+                </Link>
               </div>
               <div
                 className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center"
