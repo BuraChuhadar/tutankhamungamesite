@@ -34,7 +34,7 @@ export default async function Post(props: Params) {
     "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
-  image: imageUrl ? [imageUrl] : undefined,
+    image: imageUrl ? [imageUrl] : undefined,
     datePublished: publishedTime,
     dateModified: publishedTime,
     author: post.author?.name
