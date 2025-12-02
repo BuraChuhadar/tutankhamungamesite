@@ -208,6 +208,26 @@ export default function RootLayout({
         <meta name="twitter:site" content="@tutankhamungame" />
         <meta name="twitter:creator" content="@tutankhamungame" />
 
+        {/* Organization structured data for Google to use correct logo */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Tutankhamun: Builders of the Eternal",
+              url: "https://www.tutankhamungame.com",
+              logo: "https://www.tutankhamungame.com/assets/images/cover-image.png",
+              image:
+                "https://www.tutankhamungame.com/assets/images/cover-image.png",
+              sameAs: [
+                "https://store.steampowered.com/app/4009620/Tutankhamun__Builders_of_the_Eternal",
+                "https://discord.gg/2m2qch3m",
+              ],
+            }),
+          }}
+        />
+
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body
@@ -239,6 +259,7 @@ export default function RootLayout({
                     alt="Tutankhamun: Builders of the Eternal"
                     className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-dark translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
                     style={{ viewTransitionName: "none" }}
+                    data-nosnippet="true"
                     suppressHydrationWarning
                   />
                   {/* Light mode title */}
@@ -247,6 +268,7 @@ export default function RootLayout({
                     alt="Tutankhamun: Builders of the Eternal"
                     className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-light translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
                     style={{ viewTransitionName: "none" }}
+                    data-nosnippet="true"
                     suppressHydrationWarning
                   />
                 </Link>
