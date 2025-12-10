@@ -6,7 +6,7 @@ const nextConfig = {
   },
   // Add environment variables for proper URL generation
   env: {
-    SITE_URL: process.env.SITE_URL || 'https://tutankhamungame.com',
+    SITE_URL: process.env.SITE_URL || 'https://www.tutankhamungame.com',
   },
   // Ensure proper static asset serving
   assetPrefix: process.env.NODE_ENV === 'production' ? '' : '',

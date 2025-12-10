@@ -27,7 +27,7 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tutankhamungame.com"),
+  metadataBase: new URL(SITE_URL),
   title: `Tutankhamun: Builders of the Eternal`,
   description: `Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.`,
   keywords: [
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     title: "Tutankhamun: Builders of the Eternal",
     description:
       "Embark on an epic journey to construct and manage your own ancient Egyptian city. Lead your people, harness the power of the Nile, and create a thriving civilization.",
-    url: "https://tutankhamungame.com",
+    url: SITE_URL,
     siteName: "Tutankhamun: Builders of the Eternal",
     images: [
       {
@@ -183,7 +183,7 @@ export default function RootLayout({
           property="og:image:alt"
           content="Tutankhamun: Builders of the Eternal - Ancient Egyptian City Builder Game"
         />
-        <meta property="og:url" content="https://tutankhamungame.com" />
+        <meta property="og:url" content={SITE_URL} />
         <meta property="og:type" content="website" />
         <meta
           property="og:site_name"
