@@ -4,6 +4,9 @@ import DateFormatter from "./date-formatter";
 
 export function DevelopmentBlog() {
   const posts = getAllPosts();
+  const visibleCount = 6;
+  const recentPosts = posts.slice(0, visibleCount);
+  const olderPosts = posts.slice(visibleCount);
 
   return (
     <section className="py-5 bg-[#f9f6f2] dark:bg-[#18120a] border border-[#e6e1d5] dark:border-[#40362b] rounded-xl shadow-md mx-4">
@@ -19,7 +22,7 @@ export function DevelopmentBlog() {
         Development Blog
       </h2>
       <div className="flex flex-col gap-4 px-4">
-        {posts.map((post) => (
+        {recentPosts.map((post) => (
           <div
             key={post.slug}
             className="bg-white dark:bg-[#231a10] border border-[#e6e1d5] dark:border-[#40362b] rounded-lg p-4 shadow-sm transition-colors"
@@ -43,6 +46,40 @@ export function DevelopmentBlog() {
             </div>
           </div>
         ))}
+
+        {olderPosts.length > 0 ? (
+          <details>
+            <summary className="cursor-pointer text-[#c2881b] dark:text-[#d4a574] hover:text-[#8b6914] dark:hover:text-[#c2881b] underline transition-colors">
+              Show older posts ({olderPosts.length})
+            </summary>
+            <div className="flex flex-col gap-4 mt-4">
+              {olderPosts.map((post) => (
+                <div
+                  key={post.slug}
+                  className="bg-white dark:bg-[#231a10] border border-[#e6e1d5] dark:border-[#40362b] rounded-lg p-4 shadow-sm transition-colors"
+                >
+                  <h3 className="text-[#2d1c00] dark:text-white text-lg font-bold leading-tight mb-2">
+                    <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+                  </h3>
+                  <p className="text-[#6b4f1d] dark:text-[#beae9d] text-sm font-normal leading-normal">
+                    By {post.author.name} on <DateFormatter dateString={post.date} />
+                  </p>
+                  <p className="text-[#3d2b00] dark:text-white text-sm font-normal leading-normal">
+                    {post.excerpt}
+                  </p>
+                  <div className="mt-2">
+                    <Link
+                      href={`/posts/${post.slug}`}
+                      className="text-[#c2881b] dark:text-[#d4a574] hover:text-[#8b6914] dark:hover:text-[#c2881b] underline transition-colors"
+                    >
+                      Read More
+                    </Link>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </details>
+        ) : null}
       </div>
     </section>
   );
