@@ -112,7 +112,7 @@ export function WaitlistSignup() {
             />
           </a>
           <a
-            href="https://discord.gg/2m2qch3m"
+            href="https://discord.gg/srqZc7Jz"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#5865f2] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#4752c4] sm:w-auto"

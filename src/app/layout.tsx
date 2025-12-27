@@ -222,7 +222,7 @@ export default function RootLayout({
                 "https://www.tutankhamungame.com/assets/images/cover-image.png",
               sameAs: [
                 "https://store.steampowered.com/app/4009620/Tutankhamun__Builders_of_the_Eternal",
-                "https://discord.gg/2m2qch3m",
+                "https://discord.gg/srqZc7Jz",
               ],
             }),
           }}

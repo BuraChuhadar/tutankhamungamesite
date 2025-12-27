@@ -26,7 +26,7 @@ export function Footer() {
               />
             </a>
             <a
-              href="https://discord.gg/2m2qch3m"
+              href="https://discord.gg/srqZc7Jz"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-lg border border-[#c2881b] px-6 py-3 text-sm font-semibold uppercase tracking-wide text-[#c2881b] transition-colors duration-200 hover:bg-[#c2881b] hover:text-[#1f1a14] dark:border-[#d4a63a] dark:text-[#f5e9d6] dark:hover:bg-[#d4a63a] dark:hover:text-[#1f1a14]"
