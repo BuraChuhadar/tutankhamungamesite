@@ -26,6 +26,8 @@ With the full chain in place, the city’s supply flow now feels like a living n
 
 The Market Stall is the daily access point for food and trade. It’s not just decoration - it shapes how your city feels and functions.
 
+![Market Stall distribution hub](/assets/blog/images/2026-02-03-food-chain-complete-02.png)
+
 Key ideas behind it:
 
 - **Placement clarity:** Stalls are now placed in a way that makes valid locations obvious and integrates cleanly with nearby paths.
@@ -40,6 +42,8 @@ These ideas are inspired by the classic Impressions city builder games, adapted 
 ## Granary - The Backbone of Storage
 
 Granaries are the stability layer of the food system. They provide the safety net that keeps growth steady and prevents shortages from becoming crippling.
+
+![Granary storage and placement](/assets/blog/images/2026-02-03-food-chain-complete-01.png)
 
 What I’ve focused on:
 
@@ -56,12 +60,16 @@ This approach is inspired by the classic Impressions city-builder games, while a
 
 As your town expands, the food system scales best when you spread it out:
 
+![Supply network across the town](/assets/blog/images/2026-02-03-food-chain-complete-03.png)
+
 - Granaries act as distributed storage hubs. More granaries mean fewer bottlenecks and more reliable supply across the map.
 - Market Stalls pull from that broader storage network. More stalls improve distribution reach and reduce reliance on any single point.
 
 Together, this creates a web of supply, where food availability feels more consistent and layout decisions genuinely impact efficiency. The result is a system that feels organic: small villages can thrive with a simple setup, while larger cities grow into a layered network of storage and distribution.
 
 ---
+
+![Food chain overview](/assets/blog/images/2026-02-03-food-chain-complete-04.png)
 
 ## What’s Next
 
