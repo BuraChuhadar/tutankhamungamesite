@@ -11,16 +11,16 @@ export function MoreStories({ posts }: Props) {
   const olderPosts = posts.slice(visibleCount);
 
   return (
-    <section style={{ viewTransitionName: 'more-stories-section' }}>
-      <h2 
+    <section style={{ viewTransitionName: "more-stories-section" }}>
+      <h2
         className="mb-8 text-5xl md:text-7xl font-bold tracking-tighter leading-tight"
-        style={{ viewTransitionName: 'more-stories-title' }}
+        style={{ viewTransitionName: "more-stories-title" }}
       >
         More Stories
       </h2>
-      <div 
+      <div
         className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32"
-        style={{ viewTransitionName: 'stories-grid' }}
+        style={{ viewTransitionName: "stories-grid" }}
       >
         {recentPosts.map((post) => (
           <PostPreview

@@ -26,12 +26,13 @@ export function DevelopmentBlog() {
           <div
             key={post.slug}
             className="bg-white dark:bg-[#231a10] border border-[#e6e1d5] dark:border-[#40362b] rounded-lg p-4 shadow-sm transition-colors"
-          >            <h3 className="text-[#2d1c00] dark:text-white text-lg font-bold leading-tight mb-2">
+          >
+            {" "}
+            <h3 className="text-[#2d1c00] dark:text-white text-lg font-bold leading-tight mb-2">
               <Link href={`/posts/${post.slug}`}>{post.title}</Link>
             </h3>
             <p className="text-[#6b4f1d] dark:text-[#beae9d] text-sm font-normal leading-normal">
-              By {post.author.name} on{" "}
-              <DateFormatter dateString={post.date} />
+              By {post.author.name} on <DateFormatter dateString={post.date} />
             </p>
             <p className="text-[#3d2b00] dark:text-white text-sm font-normal leading-normal">
               {post.excerpt}
@@ -62,7 +63,8 @@ export function DevelopmentBlog() {
                     <Link href={`/posts/${post.slug}`}>{post.title}</Link>
                   </h3>
                   <p className="text-[#6b4f1d] dark:text-[#beae9d] text-sm font-normal leading-normal">
-                    By {post.author.name} on <DateFormatter dateString={post.date} />
+                    By {post.author.name} on{" "}
+                    <DateFormatter dateString={post.date} />
                   </p>
                   <p className="text-[#3d2b00] dark:text-white text-sm font-normal leading-normal">
                     {post.excerpt}
