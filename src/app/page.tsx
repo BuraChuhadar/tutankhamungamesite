@@ -12,6 +12,31 @@ export default function Index() {
   const heroPost = allPosts[0];
 
   const morePosts = allPosts.slice(1);
+  const cutoffDate = new Date();
+  cutoffDate.setMonth(cutoffDate.getMonth() - 6);
+
+  const recentPosts = morePosts.filter((post) => {
+    const postDate = new Date(post.date);
+    return !Number.isNaN(postDate.getTime()) && postDate >= cutoffDate;
+  });
+
+  const olderPosts = morePosts.filter((post) => {
+    const postDate = new Date(post.date);
+    return Number.isNaN(postDate.getTime()) || postDate < cutoffDate;
+  });
+
+  if (!heroPost) {
+    return (
+      <main>
+        <Container>
+          <ClientIntro />
+          <WaitlistSignup />
+          <FeaturedVideo />
+        </Container>
+      </main>
+    );
+  }
+
   return (
     <main>
       <Container>
@@ -26,7 +51,12 @@ export default function Index() {
           slug={heroPost.slug}
           excerpt={heroPost.excerpt}
         />
-        {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+        {recentPosts.length > 0 && (
+          <MoreStories posts={recentPosts} title="More Stories" />
+        )}
+        {olderPosts.length > 0 && (
+          <MoreStories posts={olderPosts} title="Older Posts" collapsible />
+        )}
       </Container>
     </main>
   );
