@@ -20,21 +20,28 @@ export function PostPreview({
   excerpt,
   author,
   slug,
-}: Props) {  return (
-    <div 
-      style={{ 
-        viewTransitionName: `post-preview-${slug}`,
-        '--preview-delay': `${Math.abs(slug.length % 3) * 0.1}s`
-      } as React.CSSProperties}
+}: Props) {
+  return (
+    <div
+      style={
+        {
+          viewTransitionName: `post-preview-${slug}`,
+          "--preview-delay": `${Math.abs(slug.length % 3) * 0.1}s`,
+        } as React.CSSProperties
+      }
     >
       <div className="mb-5">
-        <CoverImage 
-          slug={slug} 
-          title={title} 
+        <CoverImage
+          slug={slug}
+          title={title}
           src={coverImage}
           style={{ viewTransitionName: `hero-image-${slug}` }}
         />
-      </div>      <h3 className="text-3xl mb-3 leading-snug" style={{ viewTransitionName: `post-title-${slug}` }}>
+      </div>{" "}
+      <h3
+        className="text-3xl mb-3 leading-snug"
+        style={{ viewTransitionName: `post-title-${slug}` }}
+      >
         <a href={`/posts/${slug}`} className="hover:underline">
           {title}
         </a>

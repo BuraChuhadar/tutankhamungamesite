@@ -17,13 +17,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   // Apply theme to document
   const applyTheme = (newTheme: Theme) => {
     if (typeof window === "undefined") return;
-    
+
     const root = document.documentElement;
     const isDark =
       newTheme === "dark" ||
       (newTheme === "system" &&
         window.matchMedia("(prefers-color-scheme: dark)").matches);
-        
+
     if (isDark) {
       root.classList.add("dark");
     } else {
