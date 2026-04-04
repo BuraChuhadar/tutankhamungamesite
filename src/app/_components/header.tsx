@@ -5,7 +5,6 @@ const Header = () => {
         <a
           href="/"
           className="hover:underline text-[#c2881b] dark:text-[#d4a63a] cursor-pointer back-button px-4 py-2 rounded-md transition-colors"
-          style={{ viewTransitionName: "back-button" }}
         >
           ← Back
         </a>

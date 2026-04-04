@@ -205,6 +205,47 @@ export default function RootLayout({
         <meta name="twitter:site" content="@tutankhamungame" />
         <meta name="twitter:creator" content="@tutankhamungame" />
 
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function () {
+  try {
+    var root = document.documentElement;
+    var savedTheme = window.localStorage.getItem("theme");
+    var theme = savedTheme === "light" || savedTheme === "dark" || savedTheme === "system"
+      ? savedTheme
+      : "system";
+    var isDark = theme === "dark" || (
+      theme === "system" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    );
+
+    if (isDark) {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+
+    root.setAttribute("data-theme", theme);
+    root.setAttribute("data-mode", isDark ? "dark" : "light");
+  } catch (error) {
+    // Ignore theme bootstrap failures and fall back to the client provider.
+  }
+})();`,
+          }}
+        />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function () {
+  try {
+    window.sessionStorage.removeItem("blogPageTransition");
+  } catch (error) {
+    // Ignore sessionStorage access issues during bootstrap.
+  }
+})();`,
+          }}
+        />
+
         {/* Organization structured data for Google to use correct logo */}
         <script
           type="application/ld+json"

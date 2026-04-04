@@ -21,11 +21,7 @@ export function PostHeader({ title, coverImage, date, author, slug }: Props) {
         <Avatar name={author.name} picture={author.picture} />
       </div>
       <div className="mb-8 md:mb-16 sm:mx-0">
-        <CoverImage 
-          title={title} 
-          src={coverImage}
-          style={slug ? { viewTransitionName: `hero-image-${slug}` } : undefined}
-        />
+        <CoverImage title={title} src={coverImage} />
       </div>
     </>
   );
