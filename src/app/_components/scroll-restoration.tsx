@@ -7,7 +7,10 @@ export function ScrollRestoration() {
   const pathname = usePathname();
 
   useEffect(() => {
-    document.documentElement.classList.remove("blog-nav-flip-out", "blog-nav-flip-in");
+    document.documentElement.classList.remove(
+      "blog-nav-flip-out",
+      "blog-nav-flip-in",
+    );
     document.getElementById("blog-transition-prime-style")?.remove();
 
     if (sessionStorage.getItem("blogPageTransition")) {

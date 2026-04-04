@@ -14,9 +14,12 @@ const LoadingIntro = () => (
   </section>
 );
 
-const Intro = dynamic(() => import("./intro").then(mod => ({ default: mod.Intro })), {
-  ssr: false,
-  loading: LoadingIntro
-});
+const Intro = dynamic(
+  () => import("./intro").then((mod) => ({ default: mod.Intro })),
+  {
+    ssr: false,
+    loading: LoadingIntro,
+  },
+);
 
 export { Intro as ClientIntro };
