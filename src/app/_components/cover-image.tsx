@@ -1,5 +1,4 @@
 import cn from "classnames";
-import Link from "next/link";
 import Image from "next/image";
 
 type Props = {
@@ -24,9 +23,9 @@ const CoverImage = ({ title, src, slug, style }: Props) => {
   return (
     <div className="sm:mx-0" style={style}>
       {slug ? (
-        <Link href={`/posts/${slug}`} aria-label={title}>
+        <a href={`/posts/${slug}`} aria-label={title}>
           {image}
-        </Link>
+        </a>
       ) : (
         image
       )}

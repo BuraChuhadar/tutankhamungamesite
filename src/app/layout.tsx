@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Footer from "@/app/_components/footer";
 import { HOME_OG_IMAGE_URL, SITE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
@@ -8,8 +7,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "./_components/theme-context";
 import { ClientThemeSwitcher } from "./_components/client-theme-switcher";
 import { ClientDecorativeElements } from "./_components/client-decorative-elements";
-import { PageTransitionProvider } from "./_components/page-transition-provider";
-import { ViewTransitionsStatus } from "./_components/view-transitions-status";
 import { ScrollRestoration } from "./_components/scroll-restoration";
 import "./globals.css";
 
@@ -236,56 +233,54 @@ export default function RootLayout({
       >
         {" "}
         <ThemeProvider>
-          <PageTransitionProvider>
-            <ScrollRestoration />
-            <ClientDecorativeElements />
-            <ClientThemeSwitcher />{" "}
+          <ScrollRestoration />
+          <ClientDecorativeElements />
+          <ClientThemeSwitcher />{" "}
+          <div
+            className="layout-container flex h-full grow flex-col relative z-10"
+            suppressHydrationWarning
+          >
             <div
-              className="layout-container flex h-full grow flex-col relative z-10"
+              className="absolutebg-gradient-to-b from-[#fffbe8]/30 to-transparent dark:from-[#c2881b]/10 dark:to-transparent"
+              suppressHydrationWarning
+            ></div>{" "}
+            <div
+              className="relative flex items-center justify-center pb-4 main-title-container pt-12 sm:pt-16 md:pt-12"
+              suppressHydrationWarning
+            >
+              <a href="/" className="contents">
+                {/* Dark mode title */}
+                <img
+                  src="/assets/images/main-title.png"
+                  alt="Tutankhamun: Builders of the Eternal"
+                  className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-dark translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
+                  style={{ viewTransitionName: "none" }}
+                  data-nosnippet="true"
+                  suppressHydrationWarning
+                />
+                {/* Light mode title */}
+                <img
+                  src="/assets/images/main-title-light.png"
+                  alt="Tutankhamun: Builders of the Eternal"
+                  className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-light translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
+                  style={{ viewTransitionName: "none" }}
+                  data-nosnippet="true"
+                  suppressHydrationWarning
+                />
+              </a>
+            </div>
+            <div
+              className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center"
               suppressHydrationWarning
             >
               <div
-                className="absolutebg-gradient-to-b from-[#fffbe8]/30 to-transparent dark:from-[#c2881b]/10 dark:to-transparent"
-                suppressHydrationWarning
-              ></div>{" "}
-              <div
-                className="relative flex items-center justify-center pb-4 main-title-container pt-12 sm:pt-16 md:pt-12"
+                className="layout-content-container flex flex-col max-w-[1200px] flex-1"
                 suppressHydrationWarning
               >
-                <Link href="/" className="contents">
-                  {/* Dark mode title */}
-                  <img
-                    src="/assets/images/main-title.png"
-                    alt="Tutankhamun: Builders of the Eternal"
-                    className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-dark translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
-                    style={{ viewTransitionName: "none" }}
-                    data-nosnippet="true"
-                    suppressHydrationWarning
-                  />
-                  {/* Light mode title */}
-                  <img
-                    src="/assets/images/main-title-light.png"
-                    alt="Tutankhamun: Builders of the Eternal"
-                    className="h-128 md:h-128 lg:h-128 xl:h-128 2xl:h-128 w-auto logo-shadow main-title-static main-title-light translate-y-2 md:translate-y-2 lg:translate-y-2 xl:translate-y-2 2xl:translate-y-2"
-                    style={{ viewTransitionName: "none" }}
-                    data-nosnippet="true"
-                    suppressHydrationWarning
-                  />
-                </Link>
+                {children}
               </div>
-              <div
-                className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-40 flex flex-1 justify-center"
-                suppressHydrationWarning
-              >
-                <div
-                  className="layout-content-container flex flex-col max-w-[1200px] flex-1"
-                  suppressHydrationWarning
-                >
-                  {children}
-                </div>
-              </div>{" "}
             </div>{" "}
-          </PageTransitionProvider>
+          </div>{" "}
           <Footer />
         </ThemeProvider>
         <Analytics />

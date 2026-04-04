@@ -1,5 +1,4 @@
 import { type Author } from "@/interfaces/author";
-import Link from "next/link";
 import React from "react";
 import Avatar from "./avatar";
 import CoverImage from "./cover-image";
@@ -36,9 +35,9 @@ export function PostPreview({
           style={{ viewTransitionName: `hero-image-${slug}` }}
         />
       </div>      <h3 className="text-3xl mb-3 leading-snug" style={{ viewTransitionName: `post-title-${slug}` }}>
-        <Link href={`/posts/${slug}`} className="hover:underline">
+        <a href={`/posts/${slug}`} className="hover:underline">
           {title}
-        </Link>
+        </a>
       </h3>
       <div className="text-lg mb-4">
         <DateFormatter dateString={date} />

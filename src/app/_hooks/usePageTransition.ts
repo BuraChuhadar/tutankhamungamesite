@@ -1,94 +1,203 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useRef } from 'react';
+
+type DocumentWithViewTransitions = Document & {
+  startViewTransition?: (update: () => Promise<void> | void) => ViewTransition;
+};
 
 export const usePageTransition = () => {
   const router = useRouter();
+  const pathname = usePathname();
+  const pendingTransitionResolveRef = useRef<(() => void) | null>(null);
+  const pendingTransitionTimeoutRef = useRef<number | null>(null);
+  const activeTransitionRef = useRef<ViewTransition | null>(null);
 
-  useEffect(() => {    // Store scroll position before navigation
-    const storeScrollPosition = () => {
-      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
-    };
+  const isExpectedTransitionError = (error: unknown) => {
+    return (
+      error instanceof DOMException &&
+      (error.name === 'InvalidStateError' || error.name === 'AbortError')
+    );
+  };
 
-    // Restore scroll position after navigation
-    const restoreScrollPosition = () => {
-      const savedPosition = sessionStorage.getItem('scrollPosition');
-      if (savedPosition) {
-        window.scrollTo(0, parseInt(savedPosition, 10));
-        sessionStorage.removeItem('scrollPosition');
+  const clearPendingTransition = () => {
+    if (pendingTransitionTimeoutRef.current !== null) {
+      window.clearTimeout(pendingTransitionTimeoutRef.current);
+      pendingTransitionTimeoutRef.current = null;
+    }
+  };
+
+  const finishPendingTransition = () => {
+    if (pendingTransitionResolveRef.current) {
+      const resolve = pendingTransitionResolveRef.current;
+      pendingTransitionResolveRef.current = null;
+      clearPendingTransition();
+      resolve();
+    }
+  };
+
+  const navigateWithoutTransition = (href: string) => {
+    finishPendingTransition();
+    activeTransitionRef.current = null;
+    router.push(href);
+  };
+
+  const trackTransition = (transition: ViewTransition) => {
+    activeTransitionRef.current = transition;
+
+    void transition.ready.catch((error) => {
+      if (!isExpectedTransitionError(error)) {
+        console.error('View transition ready failed', error);
       }
-    };    // Intercept all navigation clicks for blog posts
-    const handleLinkClick = (e: Event) => {
-      const target = e.target as HTMLElement;
-      const link = target.closest('a[href^="/posts/"]') as HTMLAnchorElement;
-      
-      if (link && link.href) {
-        e.preventDefault();
-        
-        // Store current scroll position
-        storeScrollPosition();
-        
-        // Check if View Transitions API is supported
-        if ('startViewTransition' in document) {
-          (document as any).startViewTransition(() => {
-            router.push(link.getAttribute('href')!);
-          });
-        } else {
-          // Fallback for browsers that don't support View Transitions
-          router.push(link.getAttribute('href')!);
+    });
+
+    void transition.updateCallbackDone.catch((error) => {
+      if (!isExpectedTransitionError(error)) {
+        console.error('View transition update failed', error);
+      }
+    });
+
+    void transition.finished
+      .catch((error) => {
+        if (!isExpectedTransitionError(error)) {
+          console.error('View transition finished failed', error);
         }
-      }
-    };    // Also handle back button clicks
-    const handleBackClick = (e: Event) => {
-      const target = e.target as HTMLElement;
-      const link = target.closest('a[href="/"]') as HTMLAnchorElement;
-      
-      if (link && link.classList.contains('back-button')) {
-        e.preventDefault();
-        
-        if ('startViewTransition' in document) {
-          (document as any).startViewTransition(() => {
-            router.push('/');
-          });
-        } else {
-          router.push('/');
+      })
+      .finally(() => {
+        if (activeTransitionRef.current === transition) {
+          activeTransitionRef.current = null;
         }
-        
-        // Restore scroll position after navigation with a delay
-        setTimeout(() => {
-          const savedPosition = sessionStorage.getItem('scrollPosition');
-          if (savedPosition) {
-            console.log('Back button - restoring scroll position:', savedPosition);
-            window.scrollTo({
-              top: parseInt(savedPosition, 10),
-              behavior: 'smooth'
-            });
-            sessionStorage.removeItem('scrollPosition');
-          }
-        }, 300);
-      }
-    };
+      });
+  };
 
-    document.addEventListener('click', handleLinkClick);
-    document.addEventListener('click', handleBackClick);    return () => {
-      document.removeEventListener('click', handleLinkClick);
-      document.removeEventListener('click', handleBackClick);
-    };
-  }, [router]);
+  const startNavigation = (href: string, preserveScroll: boolean = false) => {
+    const nextUrl = new URL(href, window.location.origin);
+    const nextPath = `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`;
 
-  const navigateWithTransition = (url: string, preserveScroll: boolean = false) => {
     if (preserveScroll) {
       sessionStorage.setItem('scrollPosition', window.scrollY.toString());
     }
-    
-    if ('startViewTransition' in document) {
-      (document as any).startViewTransition(() => {
-        router.push(url);
-      });
-    } else {
-      router.push(url);
+
+    if (nextPath === pathname) {
+      navigateWithoutTransition(nextPath);
+      return;
     }
+
+    const transitionDocument = document as DocumentWithViewTransitions;
+
+    if (!transitionDocument.startViewTransition) {
+      navigateWithoutTransition(nextPath);
+      return;
+    }
+
+    if (document.visibilityState !== 'visible') {
+      navigateWithoutTransition(nextPath);
+      return;
+    }
+
+    if (activeTransitionRef.current) {
+      navigateWithoutTransition(nextPath);
+      return;
+    }
+
+    finishPendingTransition();
+
+    try {
+      const transition = transitionDocument.startViewTransition(() => {
+        router.push(nextPath);
+
+        return new Promise<void>((resolve) => {
+          pendingTransitionResolveRef.current = resolve;
+          pendingTransitionTimeoutRef.current = window.setTimeout(() => {
+            if (pendingTransitionResolveRef.current === resolve) {
+              pendingTransitionResolveRef.current = null;
+              pendingTransitionTimeoutRef.current = null;
+              resolve();
+            }
+          }, 1000);
+        });
+      });
+
+      trackTransition(transition);
+    } catch (error) {
+      if (error instanceof DOMException && error.name === 'InvalidStateError') {
+        navigateWithoutTransition(nextPath);
+        return;
+      }
+
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    if (!pendingTransitionResolveRef.current) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        finishPendingTransition();
+      });
+    });
+  }, [pathname]);
+
+  useEffect(() => {
+    const isModifiedClick = (e: MouseEvent) => {
+      return e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey;
+    };
+
+    const handleLinkClick = (e: MouseEvent) => {
+      if (isModifiedClick(e)) {
+        return;
+      }
+
+      const target = e.target as HTMLElement;
+      const link = target.closest('a[href^="/posts/"]') as HTMLAnchorElement | null;
+
+      if (!link) {
+        return;
+      }
+
+      const href = link.getAttribute('href');
+
+      if (!href) {
+        return;
+      }
+
+      e.preventDefault();
+      startNavigation(href, true);
+    };
+
+    const handleBackClick = (e: MouseEvent) => {
+      if (isModifiedClick(e)) {
+        return;
+      }
+
+      const target = e.target as HTMLElement;
+      const link = target.closest('a[href="/"]') as HTMLAnchorElement | null;
+
+      if (!link || !link.classList.contains('back-button')) {
+        return;
+      }
+
+      e.preventDefault();
+      startNavigation('/');
+    };
+
+    document.addEventListener('click', handleLinkClick, true);
+    document.addEventListener('click', handleBackClick, true);
+
+    return () => {
+      finishPendingTransition();
+      activeTransitionRef.current = null;
+      document.removeEventListener('click', handleLinkClick, true);
+      document.removeEventListener('click', handleBackClick, true);
+    };
+  }, [pathname, router]);
+
+  const navigateWithTransition = (url: string, preserveScroll: boolean = false) => {
+    startNavigation(url, preserveScroll);
   };
 
   return { navigateWithTransition };

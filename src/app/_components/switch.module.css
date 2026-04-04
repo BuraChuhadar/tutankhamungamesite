@@ -38,17 +38,6 @@
   font-size: calc(var(--size) * 0.6);
 }
 
-[data-mode="system"] .switch {
-  background: #9ca3af;
-  box-shadow: 0 0 12px rgba(156, 163, 175, 0.2);
-  border-color: #6b7280;
-}
-
-[data-mode="system"] .switch::after {
-  content: "⚙️";
-  font-size: calc(var(--size) * 0.6);
-}
-
 .switch:hover {
   transform: scale(1.1);
 }

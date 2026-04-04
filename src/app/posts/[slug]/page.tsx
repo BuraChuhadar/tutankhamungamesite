@@ -68,6 +68,7 @@ export default async function Post(props: Params) {
               coverImage={post.coverImage}
               date={post.date}
               author={post.author}
+              slug={post.slug}
             />
             <Script
               id={`post-jsonld-${post.slug}`}

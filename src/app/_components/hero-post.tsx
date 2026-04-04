@@ -1,7 +1,6 @@
 import Avatar from "@/app/_components/avatar";
 import CoverImage from "@/app/_components/cover-image";
 import { type Author } from "@/interfaces/author";
-import Link from "next/link";
 import DateFormatter from "./date-formatter";
 
 type Props = {
@@ -36,9 +35,9 @@ export function HeroPost({
         style={{ viewTransitionName: `blog-content-${slug}` }}
       >
         <div>          <h3 className="mb-4 text-4xl lg:text-5xl leading-tight" style={{ viewTransitionName: `hero-title-${slug}` }}>
-            <Link href={`/posts/${slug}`} className="hover:underline">
+            <a href={`/posts/${slug}`} className="hover:underline">
               {title}
-            </Link>
+            </a>
           </h3>
           <div className="mb-4 md:mb-0 text-lg">
             <DateFormatter dateString={date} />

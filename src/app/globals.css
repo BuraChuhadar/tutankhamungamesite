@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+@view-transition {
+  navigation: auto;
+}
+
 /* Font variables */
 :root {
   --font-space-grotesk: 'Space Grotesk', 'Noto Sans', sans-serif;
