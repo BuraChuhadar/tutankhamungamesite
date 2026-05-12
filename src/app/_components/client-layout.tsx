@@ -1,5 +1,6 @@
 "use client";
 
+import { DISCORD_URL } from "@/lib/links";
 import { Providers } from "./providers";
 import { ThemeSwitcher } from "./theme-switcher";
 import Footer from "./footer";
@@ -36,7 +37,12 @@ export function ClientLayout({ children }: { children: React.ReactNode }) {
                 <a className="text-gray-700 text-sm font-medium leading-normal hover:text-blue-600 transition-colors dark:text-gray-100 dark:hover:text-yellow-300">
                   Features
                 </a>
-                <a className="text-gray-700 text-sm font-medium leading-normal hover:text-blue-600 transition-colors dark:text-gray-100 dark:hover:text-yellow-300">
+                <a
+                  href={DISCORD_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-700 text-sm font-medium leading-normal hover:text-blue-600 transition-colors dark:text-gray-100 dark:hover:text-yellow-300"
+                >
                   Community
                 </a>
                 <a className="text-gray-700 text-sm font-medium leading-normal hover:text-blue-600 transition-colors dark:text-gray-100 dark:hover:text-yellow-300">

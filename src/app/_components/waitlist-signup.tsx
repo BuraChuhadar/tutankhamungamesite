@@ -1,5 +1,6 @@
 "use client";
 
+import { DISCORD_URL } from "@/lib/links";
 import { useState } from "react";
 
 export function WaitlistSignup() {
@@ -112,7 +113,7 @@ export function WaitlistSignup() {
             />
           </a>
           <a
-            href="https://discord.gg/srqZc7Jz"
+            href={DISCORD_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#5865f2] px-4 py-2 text-sm font-semibold text-white shadow-sm transition-colors duration-200 hover:bg-[#4752c4] sm:w-auto"

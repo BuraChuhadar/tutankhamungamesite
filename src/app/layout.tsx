@@ -1,5 +1,6 @@
 import Footer from "@/app/_components/footer";
 import { HOME_OG_IMAGE_URL, SITE_URL } from "@/lib/constants";
+import { DISCORD_URL } from "@/lib/links";
 import type { Metadata } from "next";
 import { Space_Grotesk, Noto_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
@@ -260,7 +261,7 @@ export default function RootLayout({
                 "https://www.tutankhamungame.com/assets/images/cover-image.png",
               sameAs: [
                 "https://store.steampowered.com/app/4009620/Tutankhamun__Builders_of_the_Eternal",
-                "https://discord.gg/srqZc7Jz",
+                DISCORD_URL,
               ],
             }),
           }}
